@@ -147,7 +147,7 @@
             color: var(--primary); 
             font-family: 'Montserrat', sans-serif; 
             margin-top: 20px; margin-bottom: 15px; 
-            font-size: 0.95rem; 
+            font-size: 0.95rem; /* Ajustado para padrão menor */
             font-weight: 800; 
             text-transform: uppercase;
             border-bottom: 2px solid #f1f1f1; 
@@ -267,6 +267,9 @@
         .comp-card { background: #fdfdfd; border: 1px solid #eee; padding: 15px; border-radius: 10px; display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
         .comp-date-badge { background: #333; color: white; padding: 8px 12px; border-radius: 8px; text-align: center; font-family: 'Montserrat'; font-weight: 700; min-width: 60px; font-size: 0.8rem; }
         .comp-title { font-weight: 700; font-size: 0.9rem; color: var(--dark); display: block; }
+        .comp-tag { font-size: 0.65rem; padding: 2px 6px; border-radius: 4px; font-weight: 800; text-transform: uppercase; }
+        .comp-tag.cbjj { background: rgba(0,0,255,0.1); color: blue; }
+        .comp-tag.fpjj { background: rgba(255,0,0,0.1); color: red; }
 
         footer { background: var(--dark); color: white; padding: 40px 5%; text-align: center; font-size: 0.8rem; }
         .socials { font-size: 1.5rem; margin-top: 15px; } .socials a { color: white; margin: 0 10px; }
@@ -295,8 +298,7 @@
     </div>
 
     <div class="top-status-bar">
-        <div class="live-dot" id="top-dot"></div>
-        <span id="top-status-text">Verificando...</span>
+        <span>ÁREA EXCLUSIVA DE HUBS</span>
     </div>
 
     <nav>
@@ -375,7 +377,7 @@
                 <div class="glow-belt g-blue dark-text"><span>AZUL<br>(Min 2 Anos)</span></div>
                 <div class="glow-belt g-purple dark-text"><span>ROXA<br>(Min 1.5 Ano)</span></div>
                 <div class="glow-belt g-brown dark-text"><span>MARROM<br>(Min 1 Ano)</span></div>
-                <div class="glow-belt g-black dark-text black-belt"><span>PRETA<br>(Professor)</span></div>
+                <div class="glow-belt g-black dark-text black-belt"><span>PRETA</span></div>
             </div>
             
             <p class="belt-disclaimer" style="margin-top:20px; font-size:0.7rem; color:#888;">*Obs: Os tempos/idades referem-se à carência mínima (IBJJF). A graduação depende de avaliação.</p>
@@ -436,6 +438,15 @@
             </div>
 
             <div id="tab-uniforme" class="tab-content active">
+                
+                <div class="metodologia-box" style="border-left: 4px solid var(--primary); margin-bottom:20px;">
+                    <span class="met-title">PADRONIZAÇÃO OBRIGATÓRIA</span>
+                    <ul class="rules-sub-list" style="margin-top:10px;">
+                        <li><strong>Campeonatos Federados:</strong> Obrigatório Kimono <b>Brazilian Roots</b> com Patch <b>The Kings</b>.</li>
+                        <li><strong>Eventos Internos/Pequenos:</strong> Obrigatório Kimono <b>The Kings</b>.</li>
+                    </ul>
+                </div>
+
                 <div class="bordered-card">
                     <span class="rules-title">KIMONO EXCLUSIVO THE KINGS</span>
                     <table class="price-table-uniforme">
@@ -748,7 +759,7 @@
                     </details>
                 </div>
 
-                <div class="metodologia-box">
+                <div class="metodologia-box" style="margin-top:20px;">
                     <span class="met-title">PROCESSO DE EVOLUÇÃO</span>
                     <p class="met-text">Todas as turmas, do básico ao avançado, seguem a mesma técnica e modelo de ensino. <strong>Para iniciantes:</strong> Passam primeiro pelo aprendizado das técnicas fundamentais e, ao atingir o nível adequado, são integrados à metodologia principal.</p>
                 </div>
@@ -768,8 +779,9 @@
     <div id="competitionModal" class="modal">
         <div class="modal-content">
             <span class="close-modal" onclick="closeModal('competitionModal')">×</span>
-            <h2 class="section-title-mod">Regras de Competição 2026</h2>
-            <p style="font-size:0.8rem; color:#666; margin-bottom:20px;">Diretrizes para atletas The Kings / Brazilian Roots</p>
+            <h2 class="section-title-mod">Regras & Calendário 2026</h2>
+            <p style="font-size:0.8rem; color:#666; margin-bottom:10px;">Diretrizes para atletas The Kings / Brazilian Roots</p>
+            <p style="font-size:0.75rem; color:var(--primary); font-weight:700; margin-bottom:20px; border-left:3px solid var(--primary); padding-left:10px;">Os campeonatos que irão participar dependerá das decisões internas entre os professores, pais e alunos.</p>
 
             <div class="rules-list-item">
                 <span class="rules-title"><i class="fas fa-ruler-combined"></i> PADRÃO DE COMPETIÇÃO (IBJJF/FPJJ)</span>
@@ -785,31 +797,15 @@
             </div>
 
             <div class="rules-list-item">
-                <span class="rules-title"><i class="fas fa-bus"></i> 1. Custos & Logística</span>
-                <ul class="rules-sub-list">
-                    <li><b>Despesas do Coach:</b> Para ter um coach, os alunos devem ratear os custos (Passagem, Alimentação, Hospedagem).</li>
-                    <li><b>Locomoção:</b> Inclui trajeto até o destino e deslocamentos internos até o estádio.</li>
-                    <li><b>Divisão:</b> O valor é dividido entre os pais/alunos participantes da mesma competição.</li>
-                </ul>
-            </div>
-
-            <div class="rules-list-item">
-                <span class="rules-title"><i class="fas fa-wallet"></i> 2. Custos do Atleta</span>
-                <ul class="rules-sub-list">
-                    <li><b>Responsabilidade:</b> Inscrição, taxas de filiação à federação e outros custos são de responsabilidade do próprio aluno.</li>
-                </ul>
-            </div>
-
-            <div class="rules-list-item">
-                <span class="rules-title"><i class="fas fa-user-check"></i> 3. Lutar sem Coach</span>
+                <span class="rules-title"><i class="fas fa-user-check"></i> LUTAR SEM COACH</span>
                 <ul class="rules-sub-list">
                     <li><b>Autorização:</b> Permitido apenas com autorização prévia do professor representante.</li>
                     <li><b>Representação:</b> O aluno deve estar federado e representar a equipe "Brazilian Roots / The King's".</li>
-                    <li><b>Solicitação:</b> Deve ser comunicado antes de efetuar a inscrição.</li>
                 </ul>
             </div>
-            
-            <button class="btn btn-primary" onclick="closeModal('competitionModal')" style="width:100%; margin-top:10px;">ENTENDI AS REGRAS</button>
+
+            <h4 class="section-title-mod" style="margin-top:30px;">PRINCIPAIS EVENTOS 2026</h4>
+            <div id="championshipsList"></div>
         </div>
     </div>
 
@@ -924,9 +920,47 @@
             }
         }
 
+        // CALENDÁRIO & MODAIS
+        const championships = [
+            { d: "31/01", t: "Sul Brasileiro (Floripa)", f: "cbjj" },
+            { d: "01/02", t: "Kids International (Floripa)", f: "cbjj" },
+            { d: "07/02", t: "South American Kids (Rio)", f: "cbjj" },
+            { d: "28/02", t: "I Copa Grandes Mestres (SP)", f: "fpjj" },
+            { d: "28/02", t: "Curitiba Summer Open", f: "cbjj" },
+            { d: "01/03", t: "I Etapa Paulista No-Gi (SP)", f: "fpjj" },
+            { d: "14/03", t: "I Etapa Circuito Paulista (Barueri)", f: "fpjj" },
+            { d: "24/04", t: "CAMPEONATO BRASILEIRO (Barueri)", f: "cbjj" },
+            { d: "23/05", t: "II Etapa Circuito Paulista (Barueri)", f: "fpjj" },
+            { d: "13/06", t: "Brasileiro Infantil (Barueri)", f: "cbjj" },
+            { d: "27/06", t: "II Copa Grandes Mestres (Guarujá)", f: "fpjj" },
+            { d: "18/07", t: "São Paulo Open (Barueri)", f: "cbjj" },
+            { d: "15/08", t: "III Etapa Circuito Paulista (Barueri)", f: "fpjj" },
+            { d: "26/09", t: "São Paulo BJJ Pro (Barueri)", f: "cbjj" },
+            { d: "20/11", t: "Sul Americano (Barueri)", f: "cbjj" }
+        ];
+
+        function renderCalendar() {
+            const list = document.getElementById('championshipsList');
+            if(!list) return;
+            let html = "";
+            championships.forEach(ev => {
+                const badgeClass = ev.f === 'cbjj' ? 'cbjj' : 'fpjj';
+                html += `
+                <div class="comp-card">
+                    <div class="comp-date-badge">${ev.d.split('/')[0]}<span>${ev.d.split('/')[1]}</span></div>
+                    <div class="comp-info">
+                        <span class="comp-title">${ev.t}</span>
+                        <span class="comp-tag ${badgeClass}">${ev.f.toUpperCase()}</span>
+                    </div>
+                </div>`;
+            });
+            list.innerHTML = html;
+        }
+
         function openModal(id) { 
             document.getElementById(id).style.display = 'block'; 
-            if(id === 'scheduleModal') updateSchedule(); // Atualiza ao abrir
+            if(id === 'scheduleModal') updateSchedule();
+            if(id === 'competitionModal') renderCalendar();
         }
         function closeModal(id) { document.getElementById(id).style.display = 'none'; }
         window.onclick = function(e) { if(e.target.className === 'modal') closeModal(e.target.id); }
