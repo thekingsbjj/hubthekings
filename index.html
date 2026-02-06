@@ -137,25 +137,36 @@
 
         .belt-disclaimer { font-size: 0.7rem; color: #888; margin-top: 25px; font-style: italic; opacity: 0.7; }
 
-        /* MODAIS & LISTAS - CORREÇÃO DE BOLINHAS E PESO */
+        /* MODAIS & LISTAS */
         .modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.85); overflow-y: auto; padding: 10px; animation: fadeIn 0.3s; }
         .modal-content { background-color: #fff; margin: 20px auto; padding: 25px; border-radius: 20px; max-width: 600px; position: relative; color: #333; box-shadow: 0 10px 40px rgba(0,0,0,0.3); }
         .close-modal { position: absolute; right: 20px; top: 15px; font-size: 2rem; cursor: pointer; color: #aaa; background: none; border: none; }
         
-        .modal-body h4, .rules-title, .met-title { 
+        /* Títulos internos padronizados */
+        .modal-body h4, .rules-title, .met-title, .section-title-mod { 
             color: var(--primary); 
             font-family: 'Montserrat', sans-serif; 
-            margin-top: 25px; margin-bottom: 10px; 
-            font-size: 1.1rem; 
-            font-weight: 800; /* NEGRITO RESTAURADO */
+            margin-top: 20px; margin-bottom: 15px; 
+            font-size: 0.95rem; /* Ajustado para padrão menor */
+            font-weight: 800; 
             text-transform: uppercase;
             border-bottom: 2px solid #f1f1f1; 
-            padding-bottom: 5px; 
+            padding-bottom: 8px; 
+            display: block;
+        }
+
+        /* Layout Caixas com Borda (Investimentos) */
+        .bordered-card {
+            border: 1px solid #333;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+            background: #fff;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
         }
 
         .rules-list-item { margin-bottom: 20px; border-left: 3px solid var(--primary); padding-left: 15px; }
         
-        /* CORREÇÃO DAS BOLINHAS DUPLICADAS */
         ul, .rules-sub-list { list-style: none !important; padding-left: 0; } 
         .rules-sub-list li, .modal-body li { 
             margin-bottom: 8px; font-size: 0.85rem; color: #555; 
@@ -165,18 +176,24 @@
             content: '•'; position: absolute; left: 0; color: var(--primary); font-weight: bold; 
         }
         
+        /* TABELA DE PREÇO (KIMONOS/GRADUAÇÃO) - Centralizada */
         .price-table-uniforme { width: 100%; border-collapse: collapse; margin-top: 15px; margin-bottom: 5px; border-radius: 8px; overflow: hidden; font-size: 0.85rem; }
         .price-table-uniforme th { background: #2d3436; color: white; padding: 10px; font-size: 0.75rem; text-transform: uppercase; font-weight: 800; letter-spacing: 0.5px; }
         .price-table-uniforme td { padding: 12px 8px; border-bottom: 1px solid #eee; text-align: center; }
         .price-table-uniforme tr:nth-child(even) { background-color: #f9f9f9; }
         
-        /* DESTAQUES EM INVESTIMENTO */
+        /* TABELA DE MEDIDAS (Estilo Original: Left/Right com espaçamento) */
+        .price-table { width: 100%; border-collapse: collapse; margin-top: 10px; font-size: 0.85rem; }
+        .price-table td { padding: 12px 5px; border-bottom: 1px solid #eee; text-align: left; }
+        .price-table td:last-child { text-align: right; font-weight: 700; color: #555; white-space: nowrap; }
+
         .highlight-green { color: #00b894; font-weight: 900; font-size: 0.9rem; }
         .highlight-anchor { color: #2d3436; font-weight: 700; }
         
+        /* Reforma Box Centralizado */
         .reform-box { background: #fff; border: 2px dashed var(--primary); border-radius: 10px; padding: 15px; margin: 15px 0; text-align: center; }
-        .reform-title { font-weight: 800; text-transform: uppercase; font-size: 0.9rem; color: var(--primary); display:block; margin-bottom: 5px; }
-        .reform-desc { font-size: 0.8rem; color: #555; display:block; margin-bottom: 10px; line-height: 1.3;}
+        .reform-title { font-weight: 800; text-transform: uppercase; font-size: 0.9rem; color: var(--primary); display:block; margin-bottom: 5px; text-align: center; width: 100%; }
+        .reform-desc { font-size: 0.8rem; color: #555; display:block; margin-bottom: 10px; line-height: 1.3; text-align: center; width: 100%; }
         
         .btn-primary { background: var(--primary); color: white; border: none; padding: 12px; border-radius: 8px; font-weight: 700; width: 100%; cursor: pointer; margin-top: 10px; display:inline-block; text-align:center; text-decoration:none;}
         .btn-outline { border: 2px solid var(--dark); color: var(--dark); background: transparent; padding: 8px 12px; border-radius: 8px; font-size: 0.7rem; text-decoration: none; display: inline-block; font-weight: 700; }
@@ -202,8 +219,16 @@
         
         .parents-note { background-color: rgba(243, 125, 29, 0.1); border: 1px solid rgba(243, 125, 29, 0.3); border-radius: 12px; padding: 15px; margin: 25px 0; display: flex; gap: 12px; align-items: start; }
 
-        /* Dropdown */
-        .dropdown-table details summary { background: #f1f1f1; color: #333; border-radius: 8px; margin-bottom: 5px; padding:10px; cursor:pointer; font-weight:700; text-align:center; list-style:none;}
+        /* Dropdown Centralizado */
+        .dropdown-table details summary { 
+            background: #f1f1f1; color: #333; border-radius: 8px; margin-bottom: 5px; 
+            padding: 12px; cursor: pointer; font-weight: 800; text-align: center; 
+            list-style: none; position: relative; display: flex; justify-content: center; align-items: center;
+        }
+        .dropdown-table details summary::-webkit-details-marker { display: none; }
+        .dropdown-table details summary::after { 
+            content: '▼'; position: absolute; right: 20px; font-size: 0.8rem; color: #555; 
+        }
         .dropdown-table details[open] summary { border-bottom-left-radius: 0; border-bottom-right-radius: 0; }
         
         /* Plan Legend & Month */
@@ -365,7 +390,7 @@
     <div id="scheduleModal" class="modal">
         <div class="modal-content">
             <span class="close-modal" onclick="closeModal('scheduleModal')">×</span>
-            <h2 style="font-family:'Montserrat'; margin-bottom:10px;">Grade de Horários</h2>
+            <h2 class="section-title-mod" style="text-align:center;">Grade de Horários</h2>
             
             <div style="background:#f8f9fa; padding:10px; border-radius:10px; margin-bottom:20px; display:flex; justify-content:space-between; align-items:center;">
                 <div style="display:flex; align-items:center; gap:8px;">
@@ -393,7 +418,7 @@
     <div id="investimentosModal" class="modal">
         <div class="modal-content">
             <span class="close-modal" onclick="closeModal('investimentosModal')">×</span>
-            <h2 style="font-family:'Montserrat'; text-align:center;">Investimentos & Padrão</h2>
+            <h2 class="section-title-mod" style="text-align:center;">Investimentos & Padrão</h2>
             
             <div style="background:#ffebee; color:#c0392b; padding:15px; border-radius:8px; border-left:5px solid #c0392b; margin-bottom:20px; font-size:0.85rem;">
                 <i class="fas fa-exclamation-triangle"></i> <strong>ATENÇÃO FILIAIS:</strong><br>
@@ -407,36 +432,13 @@
             </div>
 
             <div id="tab-uniforme" class="tab-content active">
-                <div class="metodologia-box" style="border-left: 4px solid var(--primary);">
-                    <span class="met-title">PADRONIZAÇÃO OBRIGATÓRIA</span>
-                    <ul class="rules-sub-list" style="margin-top:10px;">
-                        <li><strong>Campeonatos Federados:</strong> Obrigatório Kimono <b>Brazilian Roots</b> com Patch <b>The Kings</b>.</li>
-                        <li><strong>Eventos Internos/Pequenos:</strong> Obrigatório Kimono <b>The Kings</b>.</li>
-                    </ul>
-                </div>
-
-                <div class="rules-list-item">
-                    <span class="rules-title"><i class="fas fa-tshirt"></i> KIMONO EXCLUSIVO THE KINGS</span>
-                    
+                <div class="bordered-card">
+                    <span class="rules-title">KIMONO EXCLUSIVO THE KINGS</span>
                     <table class="price-table-uniforme">
-                        <thead>
-                            <tr>
-                                <th>MODELO</th>
-                                <th>6x SEM JUROS</th>
-                                <th style="background:#00b894; color:white;">PIX (OFERTA)</th>
-                            </tr>
-                        </thead>
+                        <thead><tr><th>MODELO</th><th>6x SEM JUROS</th><th style="background:#00b894; color:white;">PIX</th></tr></thead>
                         <tbody>
-                            <tr>
-                                <td><strong>ADULTO</strong></td>
-                                <td class="highlight-anchor">R$ 395,00</td>
-                                <td class="highlight-green">R$ 360,00</td>
-                            </tr>
-                            <tr>
-                                <td><strong>KIDS</strong></td>
-                                <td class="highlight-anchor">R$ 300,00</td>
-                                <td class="highlight-green">R$ 275,00</td>
-                            </tr>
+                            <tr><td><strong>ADULTO</strong></td><td>R$ 395,00</td><td class="highlight-green">R$ 360,00</td></tr>
+                            <tr><td><strong>KIDS</strong></td><td>R$ 300,00</td><td class="highlight-green">R$ 275,00</td></tr>
                         </tbody>
                     </table>
                     <p style="font-size:0.7rem; color:#888; text-align:center; margin-top:5px;">*Parcelamento em 10x a 12x: Adulto R$ 430 | Kids R$ 330</p>
@@ -444,11 +446,9 @@
 
                 <div class="dropdown-table" style="margin-bottom:15px;">
                     <details>
-                        <summary style="font-weight:700; color:#555; text-align:center; padding:10px; cursor:pointer;">
-                            <i class="fas fa-ruler"></i> VER TABELA DE TAMANHOS
-                        </summary>
+                        <summary><i class="fas fa-ruler" style="margin-right:8px;"></i> VER TABELA DE TAMANHOS</summary>
                         <div style="background:#fff; border:1px solid #eee; padding:10px; font-size:0.8rem;">
-                            <table class="price-table-uniforme">
+                            <table class="price-table">
                                 <tr><td><b>M00</b></td><td>Abaixo de 1,00m</td></tr>
                                 <tr><td><b>M0</b></td><td>1,00 a 1,10m</td></tr>
                                 <tr><td><b>M1</b></td><td>1,15 a 1,25m</td></tr>
@@ -466,10 +466,10 @@
                     </details>
                 </div>
 
-                <div class="reform-box">
-                    <span class="reform-title"><i class="fas fa-sync-alt"></i> Padronização (Reforma)</span>
+                <div class="bordered-card" style="border:2px dashed var(--primary); background:#fff5f0; text-align: center;">
+                    <span class="reform-title" style="margin-bottom:5px;">Padronização (Reforma)</span>
                     <span class="reform-desc">Aplicação do Kit DTF The Kings (Costas, Peito e Barra). <br><strong>*Não realizamos a retirada de patches anteriores.</strong></span>
-                    <div style="font-weight:700; color:#333;">
+                    <div style="font-weight:800; color:#333; margin-top:5px; font-size:0.9rem; text-align: center; width: 100%;">
                         2x R$ 47,50 <span style="color:#aaa; font-weight:400;">ou</span> <span class="highlight-green">R$ 85,00 (Pix)</span>
                     </div>
                 </div>
@@ -480,17 +480,8 @@
             </div>
 
             <div id="tab-graduacao" class="tab-content">
-                <div class="metodologia-box" style="border-left: 4px solid var(--dark);">
-                    <span class="met-title">NOSSA LINHAGEM</span>
-                    <p class="met-text" style="margin-bottom:10px;">A <strong>The Kings</strong> é liderada pelo <strong>Professor Jonathan Willy</strong> (Faixa Preta).</p>
-                    <p class="met-text">Em competições oficiais e graduações, somos filiados e representamos a equipe <strong>Brazilian Roots</strong>, liderada pelo <strong>Sensei Fernandinho</strong>.</p>
-                </div>
-
-                <div class="rules-list-item">
-                    <span class="rules-title"><i class="fas fa-graduation-cap"></i> SISTEMA DE GRADUAÇÃO</span>
-                    <p style="font-size:0.9rem; color:#555; margin-bottom:15px;">A troca de faixas de Jiu-Jitsu é realizada <strong>anualmente</strong> pela Equipe Brazilian Roots, com data, horário e local definidos por eles.</p>
-                    
-                    <span class="rules-title"><i class="fas fa-list-ol"></i> INVESTIMENTO GRADUAÇÃO</span>
+                <div class="bordered-card">
+                    <span class="rules-title">INVESTIMENTO GRADUAÇÃO</span>
                     <table class="price-table-uniforme">
                         <thead>
                             <tr>
@@ -510,28 +501,19 @@
             </div>
 
             <div id="tab-custos" class="tab-content">
-                <p style="font-size:0.8rem; color:#666; margin-bottom:20px;">Diretrizes financeiras para atletas em competições.</p>
-
-                <div class="rules-list-item">
-                    <span class="rules-title"><i class="fas fa-bus"></i> 1. Custos & Logística</span>
+                <div class="bordered-card">
+                    <span class="rules-title">Logística & Coach</span>
                     <ul class="rules-sub-list">
                         <li><b>Despesas do Coach:</b> Para ter um coach, os alunos devem ratear os custos (Passagem, Alimentação, Hospedagem).</li>
                         <li><b>Locomoção:</b> Inclui trajeto até o destino e deslocamentos internos até o estádio.</li>
                         <li><b>Divisão:</b> O valor é dividido entre os pais/alunos participantes da mesma competição.</li>
                     </ul>
                 </div>
-
-                <div class="rules-list-item">
-                    <span class="rules-title"><i class="fas fa-wallet"></i> 2. Custos do Atleta</span>
+                
+                <div class="bordered-card">
+                    <span class="rules-title">Custos do Atleta</span>
                     <ul class="rules-sub-list">
-                        <li><b>Responsabilidade:</b> Inscrição, taxas de filiação à federação e outros custos são de responsabilidade do próprio aluno/pais.</li>
-                    </ul>
-                </div>
-
-                <div class="rules-list-item">
-                    <span class="rules-title"><i class="fas fa-user-check"></i> 3. Lutar sem Coach</span>
-                    <ul class="rules-sub-list">
-                        <li><b>Autorização:</b> Permitido apenas com autorização prévia do professor representante.</li>
+                        <li><b>Responsabilidade:</b> Inscrição, taxas de filiação à federação e outros custos são de responsabilidade do próprio aluno.</li>
                     </ul>
                 </div>
             </div>
@@ -541,7 +523,7 @@
     <div id="tatameRulesModal" class="modal">
         <div class="modal-content">
             <span class="close-modal" onclick="closeModal('tatameRulesModal')">×</span>
-            <h2 style="font-family:'Montserrat'; text-align:center;">Regras & Conduta</h2>
+            <h2 class="section-title-mod" style="text-align:center;">Regras & Conduta</h2>
             
             <h4 style="margin-top:20px;">VESTIMENTAS OBRIGATÓRIAS</h4>
             <div class="gear-list">
@@ -555,17 +537,12 @@
                     <span class="gear-desc">Rashguard (ou camiseta preta) + Bermuda Folgada.</span>
                     <span class="gear-accessories"><strong>Regra de Modéstia:</strong> Não é permitido o uso de roupas coladas sem bermuda por cima.</span>
                 </div>
-                <div class="gear-item">
-                    <span class="gear-title">Muay Thai & Boxe</span>
-                    <span class="gear-desc">Bermuda e Camiseta (Mulheres: Top por baixo).</span>
-                    <span class="gear-accessories"><strong>Equipamentos:</strong> Luvas, Bandagem, Protetor Bucal e Caneleira.</span>
-                </div>
             </div>
 
             <h4 style="margin-top:30px;">GUIA VISUAL</h4>
             <div class="visual-rules">
                 <div class="rule-card" style="border-color:#00b894; background:rgba(0,184,148,0.05);">
-                    <span style="color:#00b894; font-weight:800; font-size:0.75rem; display:block; margin-bottom:5px;">PERMITIDO (EXEMPLO)</span>
+                    <span style="color:#00b894; font-weight:800; font-size:0.75rem; display:block; margin-bottom:5px;">PERMITIDO</span>
                     <div class="rule-img-container">
                         <img class="slide" src="https://placehold.co/400x300/e0f2f1/00695c?text=Kimono+Padrao+BR" style="opacity:1; animation:none;">
                     </div>
@@ -634,7 +611,7 @@
     <div id="planModal" class="modal">
         <div class="modal-content">
             <span class="close-modal" onclick="closeModal('planModal')">×</span>
-            <h2 style="font-family:'Montserrat'; text-align:center;">Jornada de Aprendizado 2026</h2>
+            <h2 class="section-title-mod" style="text-align:center;">Jornada de Aprendizado 2026</h2>
             
             <div class="modal-tabs">
                 <button class="tab-btn active" onclick="openPlanTab('cronograma')">CRONOGRAMA</button>
@@ -771,7 +748,7 @@
     <div id="competitionModal" class="modal">
         <div class="modal-content">
             <span class="close-modal" onclick="closeModal('competitionModal')">×</span>
-            <h2 style="font-family:'Montserrat';">Regras de Competição 2026</h2>
+            <h2 class="section-title-mod">Regras de Competição 2026</h2>
             <p style="font-size:0.8rem; color:#666; margin-bottom:20px;">Diretrizes para atletas The Kings / Brazilian Roots</p>
 
             <div class="rules-list-item">
@@ -819,7 +796,7 @@
     <div id="termModal" class="modal">
         <div class="modal-content">
             <span class="close-modal" onclick="closeModal('termModal')">×</span>
-            <h2 style="font-family:'Montserrat'; margin-bottom:20px;">Termo de Responsabilidade</h2>
+            <h2 class="section-title-mod" style="margin-bottom:20px;">Termo de Responsabilidade</h2>
             
             <div class="rules-list-item" style="border:none; padding:0;">
                 <p style="font-size:0.9rem; color:#333; margin-bottom:20px;">
