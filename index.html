@@ -8,7 +8,7 @@
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://fonts.googleapis.com; font-src 'self' https://cdnjs.cloudflare.com https://fonts.gstatic.com; img-src 'self' data: https://images.unsplash.com http://googleusercontent.com https://photos.google.com; https://placehold.co;">
     <meta name="referrer" content="no-referrer-when-downgrade">
 
-    <title>The Kings Academy | Área do Aluno</title>
+    <title>The Kings Academy | Portal Hubs</title>
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
@@ -34,314 +34,285 @@
 
         * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
         html { font-size: 16px; } 
-        body { background-color: var(--white); font-family: 'Poppins', sans-serif; color: var(--dark); line-height: 1.6; overflow-x: hidden; }
+        body { background-color: #f4f4f4; font-family: 'Poppins', sans-serif; color: var(--dark); line-height: 1.6; overflow-x: hidden; }
 
-        /* TELA DE BLOQUEIO (LOCK SCREEN) */
+        /* TELA DE BLOQUEIO */
         #lockScreen {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background-color: #121212;
-            z-index: 9999;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-            transition: opacity 0.5s ease;
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background-color: #121212; z-index: 9999;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            padding: 20px; transition: opacity 0.5s ease;
         }
         #lockScreen.hidden { opacity: 0; pointer-events: none; }
-        
         .lock-logo { width: 100px; height: 100px; border-radius: 50%; border: 3px solid var(--primary); margin-bottom: 30px; object-fit: cover; }
         .lock-title { color: white; font-family: 'Montserrat', sans-serif; font-size: 1.5rem; text-transform: uppercase; margin-bottom: 5px; text-align: center; }
         .lock-subtitle { color: #888; font-size: 0.9rem; margin-bottom: 30px; text-align: center; }
         
-        .cpf-input-group { width: 100%; max-width: 350px; position: relative; }
-        
-        /* Campo CPF Oculto (Senha) */
-        .cpf-input { 
-            width: 100%; padding: 15px; 
-            border-radius: 12px; border: 2px solid #333; 
-            background: #1e1e1e; color: white; 
-            font-size: 1.2rem; text-align: center; letter-spacing: 4px; outline: none;
-            font-family: 'Montserrat', sans-serif; transition: 0.3s;
-        }
-        .cpf-input:focus { border-color: var(--primary); box-shadow: 0 0 15px var(--primary-glow); }
-        .cpf-input::placeholder { letter-spacing: normal; font-size: 0.9rem; opacity: 0.5; }
-        
-        .lock-btn { 
-            width: 100%; max-width: 350px; margin-top: 20px; 
-            padding: 15px; background: var(--primary); color: white; 
-            border: none; border-radius: 12px; font-weight: 800; font-size: 1rem; 
-            cursor: pointer; text-transform: uppercase; letter-spacing: 1px;
-        }
+        .login-form { width: 100%; max-width: 300px; display: flex; flex-direction: column; align-items: center; }
+        .cpf-input { width: 100%; padding: 15px; border-radius: 12px; border: 2px solid #333; background: #1e1e1e; color: white; font-size: 1.1rem; text-align: center; letter-spacing: 2px; outline: none; margin-bottom: 10px; }
+        .cpf-input:focus { border-color: var(--primary); }
+        .lock-btn { width: 100%; padding: 15px; background: var(--primary); color: white; border: none; border-radius: 12px; font-weight: 800; font-size: 1rem; cursor: pointer; text-transform: uppercase; margin-top: 10px; }
         .lock-error { color: var(--danger); font-size: 0.85rem; margin-top: 15px; height: 20px; font-weight: 600; text-align: center; }
-        
         .remember-box { margin-top: 15px; display: flex; align-items: center; gap: 10px; color: #aaa; font-size: 0.85rem; }
-        .remember-box input { accent-color: var(--primary); width: 18px; height: 18px; }
 
-        /* RESTO DO SITE */
-        h1, h2, h3 { line-height: 1.2; }
-        p { font-size: 0.95rem; color: #666; }
+        /* HERO & NAV */
+        nav { background: var(--white); padding: 12px 5%; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 15px rgba(0,0,0,0.04); position: sticky; top: 0; z-index: 1000; }
+        .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--dark); }
+        .nav-logo img { width: 40px; height: 40px; border-radius: 50%; border: 2px solid var(--primary); }
+        .nav-logo span { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 1rem; }
+        
+        .hero { padding: 60px 5% 40px; text-align: center; background: white; border-bottom: 1px solid #eee; }
+        .hero h1 { font-family: 'Montserrat', sans-serif; font-size: clamp(1.8rem, 5vw, 2.5rem); text-transform: uppercase; margin-bottom: 10px; line-height: 1.2; }
+        .hero h1 span { color: var(--primary); }
+        .hero p { color: #666; font-size: 0.9rem; max-width: 600px; margin: 0 auto; }
 
-        .btn { padding: 14px 30px; border-radius: 10px; font-weight: 700; text-decoration: none; transition: 0.2s; display: inline-flex; justify-content: center; align-items: center; text-align: center; font-size: 0.9rem; cursor: pointer; }
-        .btn-primary { background: var(--primary); color: white; border: none; box-shadow: 0 4px 15px rgba(243, 125, 29, 0.3); }
-        .btn-outline { border: 2px solid var(--dark); color: var(--dark); }
-        .btn-success { background: var(--success); color: white; border: none; box-shadow: 0 4px 15px rgba(0, 184, 148, 0.3); }
-        .btn-dark { background: #000; color: white; border: 1px solid #333; }
-
-        .top-status-bar { background: var(--dark); color: white; padding: 10px 0; text-align: center; font-size: 0.75rem; font-weight: 600; display: flex; justify-content: center; align-items: center; gap: 8px; }
+        .top-status-bar { background: var(--dark); color: white; padding: 10px 0; text-align: center; font-size: 0.75rem; font-weight: 600; display:flex; justify-content:center; gap:10px; align-items:center; }
         .live-dot { height: 8px; width: 8px; border-radius: 50%; background: #555; transition: 0.3s; }
         .live-dot.active { background: var(--success); box-shadow: 0 0 10px var(--success); animation: pulse 1.5s infinite; }
         .live-dot.opening { background: var(--warning); box-shadow: 0 0 10px var(--warning); animation: pulse 1.5s infinite; }
         .live-dot.closed { background: var(--danger); }
 
-        nav { background: var(--white); padding: 12px 5%; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 15px rgba(0,0,0,0.04); height: 70px; }
-        .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--dark); }
-        .nav-logo img { width: 40px; height: 40px; border-radius: 50%; border: 2px solid var(--primary); }
-        .nav-logo span { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 1rem; }
-        .nav-actions { display: flex; gap: 10px; }
-
-        .hero { padding: 60px 5% 40px; text-align: center; background: radial-gradient(circle at 50% 0%, rgba(243, 125, 29, 0.12), transparent); }
-        .hero h1 { font-family: 'Montserrat', sans-serif; font-size: clamp(2rem, 5vw, 3rem); text-transform: uppercase; margin-bottom: 15px; }
-        .hero h1 span { color: var(--primary); }
-        .hero-btns { display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; margin-top: 20px;}
-
-        .section-header { text-align: center; margin-top: 40px; margin-bottom: 30px; }
-        .section-header h2 { font-family: 'Montserrat', sans-serif; font-size: 1.5rem; color: var(--dark); text-transform: uppercase; position: relative; display: inline-block; }
-        .section-header h2::after { content: ''; display: block; width: 50px; height: 3px; background: var(--primary); margin: 8px auto 0; }
-
-        /* --- GRID RESPONSIVO --- */
-        .guides-grid { 
+        /* GRID CENTRALIZADO (BIG CARDS) */
+        .hub-section { padding: 40px 5% 20px; max-width: 1100px; margin: 0 auto; }
+        .hub-grid { 
             display: grid; 
-            grid-template-columns: 1fr 1fr; /* Mobile: 2 colunas */
-            gap: 15px; 
-            padding: 0 5%; 
-            margin-bottom: 60px;
-            max-width: 1000px;
-            margin-left: auto; 
-            margin-right: auto;
-        }
-
-        .special-card { 
-            background: white; border: 2px solid var(--primary); border-radius: 16px; padding: 25px 15px; 
-            display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;
-            text-decoration: none; color: inherit; box-shadow: 0 4px 15px rgba(243, 125, 29, 0.1); 
-            position: relative; cursor: pointer; transition: 0.3s; 
-            min-height: 120px; 
-        }
-        .special-card:hover { transform: translateY(-5px); box-shadow: 0 8px 25px rgba(243, 125, 29, 0.2); }
-        .special-card i { font-size: 2rem; color: var(--primary); margin-bottom: 10px; display: block; }
-        .special-card h3 { font-family: 'Montserrat', sans-serif; font-size: 0.9rem; margin: 0; line-height: 1.3; }
-        
-        .invest-card {
-            background: linear-gradient(135deg, #fff 0%, #fff5ed 100%);
-            border-color: #27ae60;
-            grid-column: span 2; /* Mobile: Ocupa a linha final inteira */
-        }
-        .invest-card i { color: #27ae60; }
-
-        .clube-btn-card { border-color: var(--success); }
-        .clube-btn-card i { color: var(--success); }
-
-        .regulamento-btn-card { border-color: var(--dark); }
-        .regulamento-btn-card i { color: var(--dark); }
-
-        @media (min-width: 768px) {
-            .guides-grid { grid-template-columns: repeat(4, 1fr); gap: 25px; }
-            .invest-card { grid-column: 3 / 5; /* PC: Ocupa as ultimas 2 colunas para fechar grid */ }
-        }
-
-        .student-panel { background: #151515; color: white; padding: 60px 0; position: relative; }
-        .student-panel::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 4px; background: linear-gradient(90deg, var(--primary), #d35400); }
-        .panel-split { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; padding: 0 5%; align-items: stretch; max-width: 1100px; margin: 0 auto; }
-        .student-panel h4 { font-family: 'Montserrat', sans-serif; font-size: 1.4rem; margin-bottom: 20px; color: #fff; }
-        
-        .tools-box { margin-bottom: 30px; }
-        .tool-label { font-size: 0.75rem; text-transform: uppercase; color: #888; letter-spacing: 1px; margin-bottom: 10px; display: block; font-weight: 700; }
-        .app-grid { display: flex; gap: 10px; }
-        .app-btn { flex: 1; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); padding: 12px; border-radius: 10px; display: flex; align-items: center; justify-content: center; gap: 8px; color: white; text-decoration: none; font-size: 0.85rem; font-weight: 600; transition: 0.3s; }
-        .app-btn:hover { background: rgba(255,255,255,0.1); }
-
-        .points-highlight { 
-            background: linear-gradient(145deg, rgba(243, 125, 29, 0.15), rgba(0,0,0,0.2)); 
-            border: 1px solid rgba(243, 125, 29, 0.3); border-radius: 15px; 
-            padding: 25px; margin-bottom: 30px; 
-            cursor: pointer; transition: 0.3s;
-        }
-        .points-highlight:hover { transform: translateY(-3px); border-color: var(--primary); }
-
-        .points-main { display: flex; align-items: center; gap: 15px; margin-bottom: 10px; }
-        .big-points { font-size: 3rem; font-weight: 800; color: var(--primary); line-height: 1; }
-        .points-label { font-size: 0.8rem; font-weight: 700; color: white; line-height: 1.2; text-transform: uppercase; }
-        .points-desc { font-size: 0.85rem; color: #ddd; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 1px solid rgba(255,255,255,0.1); }
-        .app-warning { background: rgba(0,0,0,0.3); padding: 12px; border-radius: 8px; font-size: 0.8rem; display: flex; gap: 10px; align-items: start; color: #eee; margin-bottom: 15px; border-left: 3px solid var(--primary); }
-
-        .whatsapp-compact { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 12px; border-radius: 10px; text-decoration: none; background: #25D366; color: white; font-weight: 700; font-size: 0.8rem; gap: 5px; transition: 0.3s; }
-        .whatsapp-compact.parents { background: transparent; border: 1px solid #25D366; color: #25D366; }
-        .docs-list a { display: block; padding: 12px; border-bottom: 1px solid rgba(255,255,255,0.1); color: #ddd; text-decoration: none; font-size: 0.9rem; transition: 0.3s; cursor: pointer; }
-        .docs-list a:hover { color: var(--primary); padding-left: 5px; }
-        .docs-list i { margin-right: 10px; color: var(--primary); width: 20px; text-align: center; }
-
-        .clube-card { background: linear-gradient(145deg, #222, #1a1a1a); border: 2px solid var(--primary); border-radius: 20px; padding: 30px 25px; display: flex; flex-direction: column; justify-content: space-between; flex:1; }
-        .clube-title { font-family: 'Montserrat', sans-serif; font-size: 1.8rem; color: white; margin-bottom: 0; }
-        
-        /* AJUSTE FONTE PREÇO (ADULTO IGUAL KIDS) */
-        .price-highlight-box { text-align:center; background:#f8f9fa; padding:20px; border-radius:12px; margin:20px 0; border: 2px solid var(--primary); }
-        .price-kids { display:block; font-size:2.5rem; font-weight:900; color:var(--primary); line-height: 1.1; margin-top:5px; }
-        .price-adult { display:block; font-size:2.5rem; font-weight:900; color:var(--primary); line-height: 1.1; margin-top:5px; }
-        .price-label { text-transform:uppercase; font-size:0.8rem; font-weight:700; letter-spacing:1px; color:#888; }
-        .price-note { font-size:0.7rem; color:#888; display: block; margin-top: 15px; font-style: italic; }
-        .baby-note { background: rgba(243, 125, 29, 0.1); color: #f39c12; padding: 10px; border-radius: 8px; font-size: 0.8rem; margin-bottom: 20px; border-left: 3px solid #f39c12; }
-
-        /* METODOLOGIA - CORREÇÃO DE LAYOUT */
-        .methodology-section { margin: 0 5% 60px; max-width: 1000px; margin-left: auto; margin-right: auto; }
-        .method-grid { 
-            display: grid; 
-            grid-template-columns: 1fr; /* Mobile: 1 Coluna */
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
             gap: 20px; 
+            justify-content: center;
         }
-        .method-card { background: #fdfdfd; padding: 25px; border-radius: 16px; border-left: 5px solid #ccc; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
-        .method-card h3 { font-family: 'Montserrat'; font-size: 1.1rem; color: var(--dark); margin-bottom: 10px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap:10px;}
-        .age-badge { font-size: 0.7rem; padding: 4px 8px; border-radius: 6px; font-weight: 700; color: white; white-space: nowrap; }
 
-        /* TIMELINE GRADUAÇÃO - ESTILO GLOW & CENTRALIZADO */
-        .belt-section { 
-            padding: 0 5%; 
-            max-width: 1000px; 
-            margin: 60px auto 100px; /* Aumentei a margem inferior para afastar da Área do Aluno */
-            text-align: center;
+        .hub-card {
+            background: white; border: 2px solid var(--primary); 
+            border-radius: 20px; padding: 30px 20px;
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            text-align: center; cursor: pointer; transition: 0.3s;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            min-height: 200px;
         }
+        .hub-card:hover { transform: translateY(-5px); box-shadow: 0 15px 40px rgba(243, 125, 29, 0.15); }
         
-        /* Container Escuro para destacar o Neon */
-        .belt-dark-container {
-            background: #121212; /* Fundo quase preto */
-            border: 1px solid #333;
-            border-radius: 20px;
-            padding: 40px 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5); /* Sombra profunda no box */
-            position: relative;
-            overflow: hidden;
-        }
+        .hub-card i { font-size: 2.5rem; color: var(--primary); margin-bottom: 15px; }
+        .hub-card h3 { font-family: 'Montserrat'; font-size: 1rem; margin-bottom: 5px; text-transform: uppercase; color: #222; }
+        .hub-card p { font-size: 0.75rem; color: #777; line-height: 1.4; }
 
-        /* Título da Seção dentro do container */
-        .belt-section-title {
-            color: #fff;
-            font-family: 'Montserrat', sans-serif;
-            text-transform: uppercase;
-            font-size: 1.5rem;
-            margin-bottom: 40px;
-            letter-spacing: 2px;
-            text-shadow: 0 0 10px rgba(255,255,255,0.3);
-        }
+        .hub-card.card-green { border-color: var(--success); }
+        .hub-card.card-green i { color: var(--success); }
+        .hub-card.card-green:hover { box-shadow: 0 15px 40px rgba(0, 184, 148, 0.15); }
 
-        .belt-group-title {
-            color: var(--primary);
-            font-size: 0.9rem;
-            font-weight: 800;
-            margin-bottom: 20px;
-            display: block;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+        /* BOTÃO DE CALENDÁRIO */
+        .calendar-cta-container { padding: 20px 5%; text-align: center; max-width: 1100px; margin: 0 auto; }
+        .btn-calendar-lg {
+            background: var(--primary); 
+            color: white; 
+            font-family: 'Montserrat', sans-serif; 
+            font-weight: 800; 
+            font-size: 1rem; 
+            padding: 20px; 
+            width: 100%; 
+            border: none; 
+            border-radius: 15px; 
+            cursor: pointer; 
+            text-transform: uppercase; 
+            box-shadow: 0 10px 25px rgba(243, 125, 29, 0.3); 
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
         }
+        .btn-calendar-lg:hover { transform: translateY(-3px); box-shadow: 0 15px 35px rgba(243, 125, 29, 0.5); }
+        .btn-calendar-lg i { font-size: 1.2rem; }
 
-        .belt-scroll-container { 
+        /* LISTA DE CAMPEONATOS (LAYOUT ORIGINAL) */
+        .comp-list-item { 
             display: flex; 
-            gap: 15px; 
-            overflow-x: auto; 
-            padding: 20px 10px; /* Espaço para o brilho não cortar */
-            justify-content: center; /* Centraliza os itens se couberem na tela */
-            -webkit-overflow-scrolling: touch; 
-            scrollbar-width: none;
+            align-items: center; 
+            justify-content: space-between; 
+            padding: 15px 10px; 
+            border-bottom: 1px solid #eee; 
+            font-size: 0.85rem; 
         }
-        .belt-scroll-container::-webkit-scrollbar { display: none; }
+        .comp-left { display: flex; align-items: center; flex: 1; text-align: left; }
+        .comp-date { font-weight: 800; color: var(--dark); margin-right: 8px; white-space: nowrap; }
+        .comp-name { color: #555; }
+        .comp-tag-badge { font-size: 0.65rem; padding: 2px 6px; border-radius: 4px; font-weight: 800; text-transform: uppercase; margin-left: 10px; }
+        .tag-cbjj { background: rgba(0,0,255,0.1); color: blue; }
+        .tag-fpjj { background: rgba(255,0,0,0.1); color: red; }
 
-        /* Estilo da Faixa Neon */
-        .glow-belt { 
-            flex: 0 0 auto; 
-            width: 110px; height: 35px; 
-            display: flex; align-items: center; justify-content: center; 
-            position: relative;
-            border-radius: 4px; 
-            transition: all 0.3s ease;
-            cursor: default;
-        }
+        /* EFEITO PISCAR EM BREVE */
+        @keyframes blink { 0% { opacity: 1; } 50% { opacity: 0.3; } 100% { opacity: 1; } }
+        .blink-tag { color: var(--primary); font-weight: 800; font-size: 0.7rem; margin-right: 8px; animation: blink 1s infinite; text-transform: uppercase; white-space: nowrap; }
 
-        /* Efeito Hover (Zoom + Brilho extra) */
-        .glow-belt:hover { transform: scale(1.1); z-index: 10; }
-
-        /* Ponteira Preta */
-        .glow-belt::after {
-            content: ''; position: absolute; right: 0; top: 0; bottom: 0;
-            width: 25px; background-color: #000;
-            border-radius: 0 4px 4px 0; 
-            border-left: 2px solid rgba(255,255,255,0.2);
-        }
-        /* Ponteira Vermelha para Faixa Preta */
-        .glow-belt.black-belt::after { background-color: #c0392b; }
-
-        .glow-belt span { 
-            z-index: 2; font-size: 0.6rem; font-weight: 800; 
-            text-align: center; line-height: 1.1; 
-            margin-right: 25px; 
-            color: rgba(0,0,0,0.7);
-        }
-        .glow-belt.dark-text span { color: rgba(255,255,255,0.9); text-shadow: 0 1px 2px #000; }
-
-        /* CORES GLOW (NEON) */
-        .g-white { background: #fff; box-shadow: 0 0 15px rgba(255,255,255,0.6); }
-        .g-grey { background: #b2bec3; box-shadow: 0 0 15px rgba(178, 190, 195, 0.6); }
-        .g-yellow { background: #f1c40f; box-shadow: 0 0 15px rgba(241, 196, 15, 0.6); }
-        .g-orange { background: #e67e22; box-shadow: 0 0 15px rgba(230, 126, 34, 0.6); }
-        .g-green { background: #2ecc71; box-shadow: 0 0 15px rgba(46, 204, 113, 0.6); }
+        /* TIMELINE GLOW */
+        .belt-section { padding: 60px 5% 80px; max-width: 1000px; margin: 0 auto; }
+        .belt-dark-container { background: #121212; border-radius: 20px; padding: 40px 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+        .belt-section-title { color: #fff; font-family: 'Montserrat'; text-transform: uppercase; font-size: 1.5rem; margin-bottom: 10px; letter-spacing: 2px; text-align: center; }
+        .belt-desc-text { color: #ccc; font-size: 0.8rem; margin-bottom: 30px; text-align: center; max-width: 800px; margin-left: auto; margin-right: auto; background: rgba(255,255,255,0.05); padding: 15px; border-radius: 10px; }
+        .belt-desc-text strong { color: var(--white); }
         
-        .g-blue { background: #2980b9; box-shadow: 0 0 20px rgba(41, 128, 185, 0.8); border: 1px solid rgba(255,255,255,0.2); }
-        .g-purple { background: #9b59b6; box-shadow: 0 0 20px rgba(155, 89, 182, 0.8); border: 1px solid rgba(255,255,255,0.2); }
-        .g-brown { background: #795548; box-shadow: 0 0 20px rgba(121, 85, 72, 0.8); border: 1px solid rgba(255,255,255,0.2); }
-        .g-black { background: #2d3436; box-shadow: 0 0 25px rgba(255, 255, 255, 0.2); border: 1px solid #555; } /* Brilho branco sutil para destacar no fundo preto */
+        .belt-grid { display: grid; gap: 15px; }
+        
+        .belt-card { background: #1e1e1e; border-radius: 10px; overflow: hidden; transition: 0.3s; border: 1px solid #333; }
+        .belt-card.active { border-color: var(--primary); box-shadow: 0 5px 20px rgba(243, 125, 29, 0.2); }
+        
+        .belt-header { padding: 15px; cursor: pointer; display: flex; align-items: center; justify-content: space-between; }
+        .belt-header h4 { color: white; font-family: 'Montserrat'; text-transform: uppercase; font-size: 0.9rem; margin: 0; }
+        .belt-header i { color: #777; transition: 0.3s; }
+        .belt-card.active .belt-header i { transform: rotate(180deg); color: var(--primary); }
 
-        .belt-disclaimer { 
-            font-size: 0.7rem; color: #888; margin-top: 25px; 
-            font-style: italic; opacity: 0.7; 
-        }
+        /* Desenho das Faixas CSS */
+        .belt-visual { width: 100px; height: 25px; border-radius: 4px; position: relative; display: flex; align-items: center; box-shadow: 0 2px 5px rgba(0,0,0,0.5); margin-right: 15px; }
+        .belt-visual::after { content: ''; position: absolute; right: 0; top: 0; bottom: 0; width: 25px; background-color: #000; border-radius: 0 4px 4px 0; border-left: 2px solid rgba(255,255,255,0.2); }
+        .belt-visual.black-rank::after { background-color: #c0392b; } /* Tarja vermelha */
+        
+        /* Cores Base */
+        .b-white { background: #fff; }
+        .b-grey { background: #b2bec3; }
+        .b-yellow { background: #f1c40f; }
+        .b-orange { background: #e67e22; }
+        .b-green { background: #2ecc71; }
+        .b-blue { background: #2980b9; }
+        .b-purple { background: #9b59b6; }
+        .b-brown { background: #795548; }
+        .b-black { background: #111; border: 1px solid #444; }
 
-        @media (min-width: 768px) {
-            .method-grid { grid-template-columns: 1fr 1fr; } /* PC: 2 Colunas */
-        }
+        /* Variações Kids (Listras) */
+        .b-grey-white { background: linear-gradient(180deg, #b2bec3 0%, #b2bec3 35%, #ffffff 35%, #ffffff 65%, #b2bec3 65%, #b2bec3 100%); }
+        .b-grey-black { background: linear-gradient(180deg, #b2bec3 0%, #b2bec3 35%, #000000 35%, #000000 65%, #b2bec3 65%, #b2bec3 100%); }
+        
+        .b-yellow-white { background: linear-gradient(180deg, #f1c40f 0%, #f1c40f 35%, #ffffff 35%, #ffffff 65%, #f1c40f 65%, #f1c40f 100%); }
+        .b-yellow-black { background: linear-gradient(180deg, #f1c40f 0%, #f1c40f 35%, #000000 35%, #000000 65%, #f1c40f 65%, #f1c40f 100%); }
 
-        /* MODAIS */
+        .b-orange-white { background: linear-gradient(180deg, #e67e22 0%, #e67e22 35%, #ffffff 35%, #ffffff 65%, #e67e22 65%, #e67e22 100%); }
+        .b-orange-black { background: linear-gradient(180deg, #e67e22 0%, #e67e22 35%, #000000 35%, #000000 65%, #e67e22 65%, #e67e22 100%); }
+
+        .b-green-white { background: linear-gradient(180deg, #2ecc71 0%, #2ecc71 35%, #ffffff 35%, #ffffff 65%, #2ecc71 65%, #2ecc71 100%); }
+        .b-green-black { background: linear-gradient(180deg, #2ecc71 0%, #2ecc71 35%, #000000 35%, #000000 65%, #2ecc71 65%, #2ecc71 100%); }
+
+        .belt-details { display: none; padding: 15px; background: #252525; border-top: 1px solid #333; }
+        .belt-card.active .belt-details { display: block; animation: fadeIn 0.3s; }
+        
+        .variation-row { display: flex; align-items: center; margin-bottom: 12px; }
+        .variation-info { color: #bbb; font-size: 0.8rem; margin-left: 10px; }
+        .variation-name { color: white; font-weight: 700; display: block; font-size: 0.85rem; }
+
+        /* MODAIS & LISTAS */
         .modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.85); overflow-y: auto; padding: 10px; animation: fadeIn 0.3s; }
         .modal-content { background-color: #fff; margin: 20px auto; padding: 25px; border-radius: 20px; max-width: 600px; position: relative; color: #333; box-shadow: 0 10px 40px rgba(0,0,0,0.3); }
         .close-modal { position: absolute; right: 20px; top: 15px; font-size: 2rem; cursor: pointer; color: #aaa; background: none; border: none; }
         
-        .modal-body h4 { color: var(--primary); font-family: 'Montserrat', sans-serif; margin-top: 25px; margin-bottom: 10px; font-size: 1.1rem; border-bottom: 2px solid #f1f1f1; padding-bottom: 5px; }
-        .modal-body ul { list-style: none; padding-left: 0; }
-        .modal-body li { margin-bottom: 10px; font-size: 0.9rem; padding-left: 15px; position: relative; line-height: 1.5; }
-        .modal-body li::before { content: '•'; color: var(--primary); position: absolute; left: 0; font-weight: bold; }
-        .modal-body strong { color: #000; font-weight: 700; }
+        /* Títulos internos padronizados */
+        .modal-body h4, .rules-title, .met-title, .section-title-mod { 
+            color: var(--primary); 
+            font-family: 'Montserrat', sans-serif; 
+            margin-top: 20px; margin-bottom: 15px; 
+            font-size: 0.95rem; 
+            font-weight: 800; 
+            text-transform: uppercase;
+            border-bottom: 2px solid #f1f1f1; 
+            padding-bottom: 8px; 
+            display: block;
+        }
 
-        .clube-popup-header { background: linear-gradient(145deg, #222, #1a1a1a); margin: -25px -25px 20px; padding: 30px; border-radius: 20px 20px 0 0; color: white; text-align: center; border-bottom: 4px solid var(--primary); }
-        .clube-popup-header h2 { font-family: 'Montserrat', sans-serif; margin-bottom: 5px; }
-        .clube-benefits { list-style: none; padding: 0; }
-        .clube-benefits li { display: flex; gap: 10px; margin-bottom: 12px; font-size: 0.95rem; align-items: start; }
-        .clube-benefits i { color: var(--success); margin-top: 4px; }
+        /* Layout Caixas com Borda (Investimentos) */
+        .bordered-card {
+            border: 1px solid #333;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+            background: #fff;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
         
-        .plan-toggle { display: flex; background: #f0f0f0; padding: 5px; border-radius: 50px; margin: 20px 0; }
-        .toggle-btn { flex: 1; border: none; padding: 10px; border-radius: 50px; font-weight: 700; cursor: pointer; transition: 0.3s; background: transparent; color: #777; }
-        .toggle-btn.active { background: white; color: var(--primary); box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
-        .price-view { display: none; animation: fadeIn 0.4s; }
-        .price-view.active { display: block; }
+        /* Caixa Metodologia Extra */
+        .metodologia-box { margin-bottom: 25px; padding: 15px; background: #fff; border: 1px solid #eee; border-radius: 10px; }
+        .met-text { font-size: 0.85rem; color: #555; line-height: 1.6; }
 
-        .comp-card { background: #fdfdfd; border: 1px solid #eee; padding: 15px; border-radius: 10px; display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; transition: 0.3s; }
-        .comp-card:hover { transform: translateX(5px); border-color: var(--primary); }
-        .comp-date-badge { background: #333; color: white; padding: 8px 12px; border-radius: 8px; text-align: center; font-family: 'Montserrat'; font-weight: 700; min-width: 60px; font-size: 0.8rem; }
-        .comp-date-badge span { display: block; font-size: 1.1rem; }
-        .comp-info { flex: 1; margin: 0 15px; }
-        .comp-title { font-weight: 700; font-size: 0.9rem; color: var(--dark); display: block; }
-        .comp-tag { font-size: 0.65rem; padding: 2px 6px; border-radius: 4px; font-weight: 800; text-transform: uppercase; }
-        .comp-tag.cbjj { background: rgba(0,0,255,0.1); color: blue; }
-        .comp-tag.fpjj { background: rgba(255,0,0,0.1); color: red; }
-        .comp-tag.soon { background: var(--warning); color: #fff; margin-left: 5px; animation: pulse 2s infinite; }
+        .rules-list-item { margin-bottom: 20px; border-left: 3px solid var(--primary); padding-left: 15px; }
+        
+        ul, .rules-sub-list { list-style: none !important; padding-left: 0; } 
+        .rules-sub-list li, .modal-body li { 
+            margin-bottom: 8px; font-size: 0.85rem; color: #555; 
+            position: relative; padding-left: 15px; line-height: 1.5; 
+        }
+        .rules-sub-list li::before, .modal-body li::before { 
+            content: '•'; position: absolute; left: 0; color: var(--primary); font-weight: bold; 
+        }
+        
+        /* TABELA DE PREÇO (KIMONOS/GRADUAÇÃO) - Centralizada */
+        .price-table-uniforme { width: 100%; border-collapse: collapse; margin-top: 15px; margin-bottom: 5px; border-radius: 8px; overflow: hidden; font-size: 0.85rem; }
+        .price-table-uniforme th { background: #2d3436; color: white; padding: 10px; font-size: 0.75rem; text-transform: uppercase; font-weight: 800; letter-spacing: 0.5px; }
+        .price-table-uniforme td { padding: 12px 8px; border-bottom: 1px solid #eee; text-align: center; }
+        .price-table-uniforme tr:nth-child(even) { background-color: #f9f9f9; }
+        
+        /* TABELA DE MEDIDAS (Estilo Original: Left/Right com espaçamento) */
+        .price-table { width: 100%; border-collapse: collapse; margin-top: 10px; font-size: 0.85rem; }
+        .price-table td { padding: 12px 5px; border-bottom: 1px solid #eee; text-align: left; }
+        .price-table td:last-child { text-align: right; font-weight: 700; color: #555; white-space: nowrap; }
 
+        .highlight-green { color: #00b894; font-weight: 900; font-size: 0.9rem; }
+        .highlight-anchor { color: #2d3436; font-weight: 700; }
+        
+        /* Reforma Box Centralizado */
+        .reform-box { background: #fff; border: 2px dashed var(--primary); border-radius: 10px; padding: 15px; margin: 15px 0; text-align: center; }
+        .reform-title { font-weight: 800; text-transform: uppercase; font-size: 0.9rem; color: var(--primary); display:block; margin-bottom: 5px; text-align: center; width: 100%; }
+        .reform-desc { font-size: 0.8rem; color: #555; display:block; margin-bottom: 10px; line-height: 1.3; text-align: center; width: 100%; }
+        
+        .btn-primary { background: var(--primary); color: white; border: none; padding: 12px; border-radius: 8px; font-weight: 700; width: 100%; cursor: pointer; margin-top: 10px; display:inline-block; text-align:center; text-decoration:none;}
+        .btn-outline { border: 2px solid var(--dark); color: var(--dark); background: transparent; padding: 8px 12px; border-radius: 8px; font-size: 0.7rem; text-decoration: none; display: inline-block; font-weight: 700; }
+
+        .modal-tabs { display: flex; border-bottom: 1px solid #eee; margin-bottom: 20px; font-size: 0.75rem; }
+        .tab-btn { flex: 1; padding: 12px 5px; text-align: center; background: none; border: none; font-weight: 700; color: #aaa; cursor: pointer; border-bottom: 3px solid transparent; }
+        .tab-btn.active { color: var(--primary); border-bottom-color: var(--primary); }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+
+        /* Placeholders Rules */
+        .gear-list { display: grid; gap: 15px; margin-bottom: 25px; }
+        .gear-item { background: #f8f9fa; padding: 15px; border-radius: 12px; border-left: 4px solid var(--primary); }
+        .gear-title { font-weight: 800; font-size: 1rem; display: block; margin-bottom: 8px; color: #222; text-transform: uppercase; }
+        .gear-desc { font-size: 0.9rem; color: #555; display: block; margin-bottom: 5px; }
+        .gear-accessories { font-size: 0.8rem; color: #888; font-style: italic; }
+
+        .visual-rules { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 15px; }
+        .rule-card { border: 1px solid #eee; border-radius: 12px; padding: 15px; text-align: center; }
+        .rule-img-container { width: 100%; height: 180px; background: #ddd; border-radius: 8px; overflow: hidden; position: relative; margin-bottom: 10px; }
+        .slide { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; animation: slideFade 8s infinite; }
+        .slide:nth-child(2) { animation-delay: 4s; }
+        
+        .parents-note { background-color: rgba(243, 125, 29, 0.1); border: 1px solid rgba(243, 125, 29, 0.3); border-radius: 12px; padding: 15px; margin: 25px 0; display: flex; gap: 12px; align-items: start; }
+
+        /* Dropdown Centralizado */
+        .dropdown-table details summary { 
+            background: #f1f1f1; color: #333; border-radius: 8px; margin-bottom: 5px; 
+            padding: 12px; cursor: pointer; font-weight: 800; text-align: center; 
+            list-style: none; position: relative; display: flex; justify-content: center; align-items: center;
+        }
+        .dropdown-table details summary::-webkit-details-marker { display: none; }
+        .dropdown-table details summary::after { 
+            content: '▼'; position: absolute; right: 20px; font-size: 0.8rem; color: #555; 
+        }
+        .dropdown-table details[open] summary { border-bottom-left-radius: 0; border-bottom-right-radius: 0; }
+        
+        /* Plan Legend & Month */
+        .plan-legend { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 20px; justify-content: center; }
+        .plan-badge { padding: 6px 12px; border-radius: 20px; font-size: 0.7rem; font-weight: 700; color: white; display: flex; align-items: center; gap: 5px; cursor: pointer; transition: 0.3s; opacity: 1; }
+        .plan-badge.faded { opacity: 0.2; }
+        .plan-month { border-left: 4px solid #ddd; padding: 15px; background: #f9f9f9; border-radius: 0 10px 10px 0; margin-bottom: 15px; transition: 0.3s; }
+        .plan-month h5 { font-family:'Montserrat'; font-weight:800; font-size:0.9rem; margin-bottom:5px; text-transform:uppercase; color:#333; }
+        .cycle-restart { text-align: center; margin-top: 30px; padding: 20px; opacity: 0.7; }
+        .cycle-restart i { font-size: 1.5rem; color: var(--dark); display: block; margin-bottom: 5px; animation: spin 10s linear infinite; }
+        
+        /* Accordion Method */
+        details { margin-bottom: 10px; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+        summary { padding: 15px; font-weight: 800; cursor: pointer; color: white; list-style: none; display: flex; justify-content: space-between; align-items: center; }
+        .details-content { padding: 20px; background: #fdfdfd; border: 1px solid #eee; border-top: none; font-size: 0.85rem; color: #555; line-height: 1.6; }
+        .bg-blue { background: var(--met-blue); } .bg-yellow { background: var(--met-yellow); }
+        .bg-green { background: var(--met-green); } .bg-red { background: var(--met-red); }
+        .bc-blue { border-color: var(--met-blue); } .bc-yellow { border-color: var(--met-yellow); }
+        .bc-green { border-color: var(--met-green); } .bc-red { border-color: var(--met-red); }
+
+        /* Schedule */
         .class-list { list-style: none; margin-top: 15px; padding: 0; }
         .class-item { display: flex; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid #eee; font-size: 0.9rem; align-items: center; }
         .class-item.active { color: var(--primary); font-weight: 800; border-bottom: 2px solid var(--primary); }
@@ -351,338 +322,233 @@
         .full-grade-times { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
         .time-badge { background: #f8f9fa; padding: 8px; border-radius: 6px; font-size: 0.8rem; text-align: center; font-weight: 600; color: #333; }
 
-        .modal-tabs { display: flex; border-bottom: 1px solid #eee; margin-bottom: 20px; font-size: 0.75rem; }
-        .tab-btn { flex: 1; padding: 12px 5px; text-align: center; background: none; border: none; font-weight: 700; color: #aaa; cursor: pointer; border-bottom: 3px solid transparent; text-transform: uppercase; }
-        .tab-btn.active { color: var(--primary); border-bottom-color: var(--primary); }
-        .tab-content { display: none; animation: fadeIn 0.3s; }
-        .tab-content.active { display: block; }
-
-        .plan-legend { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 20px; justify-content: center; }
-        .plan-badge { padding: 6px 12px; border-radius: 20px; font-size: 0.7rem; font-weight: 700; color: white; display: flex; align-items: center; gap: 5px; cursor: pointer; transition: 0.3s; opacity: 1; }
-        .plan-badge:hover { transform: scale(1.05); }
-        .plan-badge.faded { opacity: 0.2; }
-        .plan-month { border-left: 4px solid #ddd; padding: 15px; background: #f9f9f9; border-radius: 0 10px 10px 0; margin-bottom: 15px; transition: 0.3s; }
-        .bc-blue { border-color: var(--met-blue); } .bg-blue { background: var(--met-blue); }
-        .bc-yellow { border-color: var(--met-yellow); } .bg-yellow { background: var(--met-yellow); }
-        .bc-green { border-color: var(--met-green); } .bg-green { background: var(--met-green); }
-        .bc-red { border-color: var(--met-red); } .bg-red { background: var(--met-red); }
-
-        .metodologia-box { margin-bottom: 25px; padding: 15px; background: #fff; border: 1px solid #eee; border-radius: 10px; }
-        .met-title { color: var(--primary); font-weight: 800; font-size: 0.9rem; margin-bottom: 10px; display: block; text-transform: uppercase; }
-        .met-text { font-size: 0.85rem; color: #555; line-height: 1.6; }
-        details { margin-bottom: 10px; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
-        summary { padding: 15px; font-weight: 800; cursor: pointer; color: white; list-style: none; display: flex; justify-content: space-between; align-items: center; }
-        summary::after { content: '▼'; font-size: 0.8rem; transition: 0.3s; }
-        details[open] summary::after { transform: rotate(180deg); }
-        .details-content { padding: 20px; background: #fdfdfd; border: 1px solid #eee; border-top: none; font-size: 0.85rem; color: #555; line-height: 1.6; }
-        .details-content strong { color: #333; display: block; margin-top: 10px; margin-bottom: 2px; }
-        .details-content ul { padding-left: 20px; margin-top: 5px; }
-
-        .rules-list-item { margin-bottom: 20px; border-left: 3px solid var(--primary); padding-left: 15px; }
-        /* Correção para não quebrar linha no negrito comum */
-        .rules-list-item strong { color: #000; font-weight: 700; }
-        /* Títulos de regras que pulam linha */
-        .rules-title {
-            color: var(--primary); display: block; font-weight: 800; font-size: 0.95rem; margin-bottom: 5px; font-family: 'Montserrat', sans-serif; text-transform: uppercase;
-        }
-
-        .rules-sub-list { list-style: none; padding: 0; }
-        .rules-sub-list li { margin-bottom: 5px; font-size: 0.85rem; color: #555; position: relative; padding-left: 15px; line-height: 1.4; }
-        .rules-sub-list li::before { content: '•'; position: absolute; left: 0; color: #ccc; }
-        .rules-sub-list li b { color: #333; }
-
-        .gear-list { display: grid; gap: 15px; margin-bottom: 25px; }
-        .gear-item { background: #f8f9fa; padding: 15px; border-radius: 12px; border-left: 4px solid var(--primary); }
-        .gear-title { font-weight: 800; font-size: 1rem; display: block; margin-bottom: 8px; color: #222; text-transform: uppercase; }
-        .gear-desc { font-size: 0.9rem; color: #555; display: block; margin-bottom: 5px; }
-        .gear-accessories { font-size: 0.8rem; color: #888; font-style: italic; }
-        .visual-rules { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin: 25px 0; }
-        .rule-card { border: 1px solid #eee; border-radius: 12px; padding: 15px; text-align: center; }
-        .rule-img-container { width: 100%; height: 180px; background: #ddd; border-radius: 8px; overflow: hidden; position: relative; margin-bottom: 10px; }
-        .slide { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; animation: slideFade 8s infinite; }
-        .slide:nth-child(2) { animation-delay: 4s; }
-        .parents-note { background-color: rgba(243, 125, 29, 0.1); border: 1px solid rgba(243, 125, 29, 0.3); border-radius: 12px; padding: 15px; margin: 25px 0; display: flex; gap: 12px; align-items: start; }
-        
-        /* ESTILO NOVO PARA A TABELA DE PREÇOS (KIMONOS) */
-        .price-table-uniforme { 
-            width: 100%; border-collapse: collapse; margin-top: 15px; margin-bottom: 5px;
-            border-radius: 8px; overflow: hidden; 
-            font-size: 0.85rem; 
-        }
-        .price-table-uniforme th { 
-            background: #2d3436; color: white; padding: 10px 5px; 
-            font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.5px; 
-        }
-        .price-table-uniforme td { 
-            padding: 12px 8px; border-bottom: 1px solid #eee; text-align: center; 
-        }
-        .price-table-uniforme tr:nth-child(even) { background-color: #f9f9f9; }
-        .highlight-green { color: #00b894; font-weight: 800; }
-        .highlight-anchor { color: #2d3436; font-weight: 700; }
-        
-        .reform-box {
-            background: #fff; border: 2px dashed var(--primary); border-radius: 10px;
-            padding: 15px; margin: 15px 0; text-align: center;
-        }
-        .reform-title { font-weight: 800; text-transform: uppercase; font-size: 0.9rem; color: var(--primary); display:block; margin-bottom: 5px; }
-        .reform-desc { font-size: 0.8rem; color: #555; display:block; margin-bottom: 10px; line-height: 1.3;}
-        
-        .price-table { width: 100%; border-collapse: collapse; margin-top: 10px; font-size: 0.85rem; }
-        .price-table td { padding: 12px 5px; border-bottom: 1px solid #eee; }
-        .price-table td:last-child { text-align: right; font-weight: 700; color: var(--primary); white-space: nowrap; }
-
-        .cycle-restart { text-align: center; margin-top: 30px; padding: 20px; opacity: 0.7; }
-        .cycle-restart i { font-size: 1.5rem; color: var(--dark); display: block; margin-bottom: 5px; animation: spin 10s linear infinite; }
-        .cycle-restart span { font-family: 'Montserrat'; font-weight: 700; font-size: 0.9rem; letter-spacing: 1px; }
-
-        /* Estilo Dropdown Tabela */
-        .dropdown-table details summary {
-            background: #f1f1f1; color: #333; border-radius: 8px; margin-bottom: 5px;
-        }
-        .dropdown-table details[open] summary {
-            border-bottom-left-radius: 0; border-bottom-right-radius: 0;
-        }
-
         footer { background: var(--dark); color: white; padding: 40px 5%; text-align: center; font-size: 0.8rem; }
-        .socials { display: flex; justify-content: center; gap: 25px; font-size: 1.5rem; margin-top: 20px; }
-        .socials a { color: white; transition: 0.3s; }
-        .socials a:hover { color: var(--primary); }
-        .disclaimer { font-size: 0.7rem; color: #888; margin-top: 20px; font-style: italic; max-width: 800px; margin-left: auto; margin-right: auto; line-height: 1.4; }
+        .socials { font-size: 1.5rem; margin-top: 15px; } .socials a { color: white; margin: 0 10px; }
 
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
         @keyframes slideFade { 0% { opacity: 0; } 10% { opacity: 1; } 40% { opacity: 1; } 50% { opacity: 0; } 100% { opacity: 0; } }
         @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.3; } 100% { opacity: 1; } }
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
         @keyframes spin { 100% { transform: rotate(360deg); } }
-
-        @media (max-width: 768px) {
-            .panel-split, .visual-rules { grid-template-columns: 1fr; }
-            .hero-btns .btn { width: 100%; }
-            .comp-card { flex-direction: column; align-items: flex-start; gap: 10px; }
-            .comp-card .btn { width: 100%; margin-top: 5px; }
-        }
     </style>
 </head>
 <body>
 
     <div id="lockScreen">
         <img src="logo.png" alt="Logo" class="lock-logo">
-        <h2 class="lock-title">Área Exclusiva</h2>
-        <p class="lock-subtitle">Digite seu CPF para acessar a plataforma.</p>
-        
-        <div class="cpf-input-group">
-            <input type="password" inputmode="numeric" id="cpfInput" class="cpf-input" placeholder="Digite apenas números" maxlength="11">
-        </div>
-        
-        <div class="remember-box">
-            <input type="checkbox" id="rememberMe">
-            <label for="rememberMe">Manter conectado por 30 dias</label>
-        </div>
-
-        <button onclick="attemptLogin()" class="lock-btn">ENTRAR</button>
+        <h2 class="lock-title">Portal Hubs</h2>
+        <p class="lock-subtitle">Área restrita. Digite a senha da equipe.</p>
+        <form class="login-form" onsubmit="attemptLogin(event)">
+            <input type="password" id="cpfInput" class="cpf-input" placeholder="SENHA DA EQUIPE">
+            <div class="remember-box">
+                <input type="checkbox" id="rememberMe">
+                <label for="rememberMe">Manter conectado por 30 dias</label>
+            </div>
+            <button type="submit" class="lock-btn">ENTRAR</button>
+        </form>
         <div id="loginError" class="lock-error"></div>
     </div>
 
     <div class="top-status-bar">
-        <div class="live-dot" id="top-dot"></div>
-        <span id="top-status-text">Verificando...</span>
+        <span>ÁREA EXCLUSIVA DE HUBS</span>
     </div>
 
     <nav>
         <a href="#" class="nav-logo">
             <img src="logo.png" alt="Logo">
-            <span>THE KINGS ACADEMY</span>
+            <span>THE KINGS</span>
         </a>
         <div class="nav-actions">
-            <button onclick="openModal('clubeModal')" class="btn btn-success" style="padding: 8px 16px; font-size: 0.75rem;">CLUBE+</button>
-            <a href="https://wa.me/5511951945648" class="btn btn-primary" style="padding: 8px 16px; font-size: 0.75rem;" target="_blank" rel="noopener noreferrer">CONTATO</a>
+            <a href="https://wa.me/5511951945648" class="btn btn-primary" style="padding: 8px 16px; font-size: 0.75rem; margin-top:0;" target="_blank">FALAR COM MATRIZ</a>
         </div>
     </nav>
 
     <header class="hero">
-        <h1>Bem-vindo à Família <span>The Kings</span></h1>
-        <p>Formando campeões no tatame e na vida. Princípios cristãos, respeito e disciplina.</p>
-        <div class="hero-btns">
-            <a href="#comecar" class="btn btn-primary">COMEÇAR JORNADA</a>
-            <a href="#aluno" class="btn btn-outline">ÁREA DO ALUNO</a>
-        </div>
+        <h1>Padrão de Excelência <span>The Kings</span></h1>
+        <p>Diretrizes Oficiais para Filiados e Alunos.</p>
     </header>
 
-    <div class="section-header" id="comecar">
-        <h2>Primeiros Passos</h2>
+    <section class="hub-section">
+        <div class="hub-grid">
+            <div class="hub-card" onclick="openModal('scheduleModal')">
+                <i class="fas fa-calendar-alt"></i>
+                <h3>Grade Horária</h3>
+                <p>Confira os horários das aulas da Matriz.</p>
+            </div>
+
+            <div class="hub-card" onclick="openModal('planModal')">
+                <i class="fas fa-graduation-cap"></i>
+                <h3>Metodologia</h3>
+                <p>Sistema de ensino, Cores Kids e Free Movement.</p>
+            </div>
+
+            <div class="hub-card" onclick="openModal('tatameRulesModal')">
+                <i class="fas fa-book-reader"></i>
+                <h3>Regras & Conduta</h3>
+                <p>Código de etiqueta, higiene e guia visual de uniforme.</p>
+            </div>
+
+            <div class="hub-card" onclick="openModal('competitionModal')">
+                <i class="fas fa-trophy"></i>
+                <h3>Competições</h3>
+                <p>Regras de kimono, tabela de peso.</p>
+            </div>
+
+            <div class="hub-card" onclick="openModal('termModal')">
+                <i class="fas fa-file-contract"></i>
+                <h3>Termos & Bullying</h3>
+                <p>Responsabilidades, isenção e política anti-bullying.</p>
+            </div>
+
+            <div class="hub-card card-green" onclick="openModal('investimentosModal')">
+                <i class="fas fa-money-bill-wave"></i>
+                <h3>Investimentos</h3>
+                <p>Kimonos, Graduação e Equipamentos (Compra Exclusiva).</p>
+            </div>
+        </div>
+    </section>
+
+    <div class="calendar-cta-container">
+        <button class="btn-calendar-lg" onclick="openModal('calendarModal')">
+            <i class="fas fa-calendar-check"></i> CALENDÁRIO DE COMPETIÇÕES 2026
+        </button>
     </div>
-
-    <section class="guides-grid">
-        <div class="special-card" onclick="openModal('downloadModal')">
-            <i class="fas fa-mobile-alt"></i>
-            <h3>Check-in App</h3>
-        </div>
-
-        <div class="special-card" onclick="openModal('tatameRulesModal')">
-            <i class="fas fa-book-reader"></i>
-            <h3>Regras Tatame</h3>
-        </div>
-
-        <div class="special-card" onclick="openModal('planModal')">
-            <i class="fas fa-graduation-cap"></i>
-            <h3>Plano Aula</h3>
-        </div>
-
-        <div class="special-card" onclick="openModal('scheduleModal')">
-            <i class="fas fa-calendar-alt"></i>
-            <h3>Grade Horária</h3>
-        </div>
-
-        <div class="special-card clube-btn-card" onclick="openModal('clubeModal')">
-            <i class="fas fa-crown"></i>
-            <h3>CLUBE+</h3>
-        </div>
-
-        <div class="special-card regulamento-btn-card" onclick="openModal('termModal')">
-            <i class="fas fa-file-contract"></i>
-            <h3>Regulamento</h3>
-        </div>
-
-        <div class="special-card invest-card" onclick="openModal('investimentosModal')">
-            <i class="fas fa-money-bill-wave"></i>
-            <h3>INVESTIMENTOS & UNIFORME</h3>
-        </div>
-    </section>
-
-    <section class="methodology-section">
-        <div class="section-header" style="margin-top:0; margin-bottom:20px;">
-            <h2>Metodologia Kids</h2>
-            <p>Formando campeões na vida através de programas específicos por idade.</p>
-        </div>
-        
-        <div class="method-grid">
-            <div class="method-card" style="border-left-color: var(--warning);">
-                <h3>MINI NINJAS <span class="age-badge" style="background:var(--warning);">04-07 ANOS</span></h3>
-                <p style="font-size:0.85rem; color:#555; margin-bottom:10px;">Uma jornada onde eles aprendem brincando.</p>
-                <ul class="rules-sub-list">
-                    <li>Foco lúdico e coordenação motora.</li>
-                    <li>Introdução à disciplina e respeito.</li>
-                    <li><strong>Grau da Disciplina:</strong> Avaliação mensal por cores (Amarelo, Verde, Vermelho e Azul).</li>
-                </ul>
-            </div>
-
-            <div class="method-card" style="border-left-color: var(--primary);">
-                <h3>PEQUENOS GUERREIROS <span class="age-badge" style="background:var(--primary);">07-13 ANOS</span></h3>
-                <p style="font-size:0.85rem; color:#555; margin-bottom:10px;">Transformando jovens em grandes adultos.</p>
-                <ul class="rules-sub-list">
-                    <li>Técnicas de defesa pessoal e estratégia.</li>
-                    <li>Controle emocional e liderança.</li>
-                    <li><strong>Grau de Conquistas:</strong> Reconhecimento trimestral de esforço e notas escolares.</li>
-                </ul>
-            </div>
-        </div>
-
-        <div style="text-align:center; margin-top:25px;">
-            <span style="background:rgba(231, 76, 60, 0.1); color:#c0392b; padding:10px 20px; border-radius:30px; font-size:0.85rem; font-weight:700; display:inline-block;">
-                <i class="fas fa-shield-alt"></i> METODOLOGIA CONTRA O BULLYING & AMBIENTE SEGURO
-            </span>
-        </div>
-    </section>
 
     <section class="belt-section">
         <div class="belt-dark-container">
-            <h2 class="belt-section-title">Sistema de Graduação (IBJJF)</h2>
-
-            <span class="belt-group-title">KIDS (04 a 15 ANOS)</span>
-            <div class="belt-scroll-container">
-                <div class="glow-belt g-white"><span>BRANCA<br>(Início)</span></div>
-                <div class="glow-belt g-grey"><span>CINZA<br>(4+ Anos)</span></div>
-                <div class="glow-belt g-yellow"><span>AMARELA<br>(7+ Anos)</span></div>
-                <div class="glow-belt g-orange"><span>LARANJA<br>(10+ Anos)</span></div>
-                <div class="glow-belt g-green"><span>VERDE<br>(13+ Anos)</span></div>
-            </div>
-
-            <div style="margin: 20px 0; border-top: 1px solid #333;"></div>
-
-            <span class="belt-group-title">JUVENIL & ADULTO (16+ ANOS)</span>
-            <div class="belt-scroll-container">
-                <div class="glow-belt g-white"><span>BRANCA<br>(Início)</span></div>
-                <div class="glow-belt g-blue dark-text"><span>AZUL<br>(Min 2 Anos)</span></div>
-                <div class="glow-belt g-purple dark-text"><span>ROXA<br>(Min 1.5 Ano)</span></div>
-                <div class="glow-belt g-brown dark-text"><span>MARROM<br>(Min 1 Ano)</span></div>
-                <div class="glow-belt g-black dark-text black-belt"><span>PRETA<br>(Professor)</span></div>
-            </div>
+            <h2 class="belt-section-title">Sistema de Graduação</h2>
             
-            <p class="belt-disclaimer">*Obs: Os tempos/idades apresentados referem-se à carência mínima exigida pela regra (IBJJF). A graduação não é automática e depende da avaliação técnica e comportamental do professor.</p>
-        </div>
-    </section>
+            <p class="belt-desc-text">
+                <strong>KIDS (04 a 15 Anos):</strong> A graduação ocorre preferencialmente em <strong>Dezembro</strong> por merecimento acumulado do ano, não apenas por idade. A avaliação baseia-se no tripé: 🥋 <strong>Tatame</strong> (Técnica/Disciplina) + 📚 <strong>Escola</strong> (Notas) + 👨‍👩‍👦 <strong>Casa</strong> (Feedback dos Pais).
+            </p>
 
-    <section class="student-panel" id="aluno">
-        <div class="panel-split">
-            <div class="left-col">
-                <h4>Ferramentas do Aluno</h4>
-                <div class="tools-box">
-                    <span class="tool-label">FERRAMENTAS</span>
-                    <div class="app-grid">
-                        <button onclick="openModal('downloadModal')" class="app-btn"><i class="fab fa-apple"></i> Check-in iOS</button>
-                        <button onclick="openModal('downloadModal')" class="app-btn"><i class="fab fa-android"></i> Check-in Android</button>
+            <div class="belt-grid">
+                <div class="belt-card" onclick="toggleBelt(this)">
+                    <div class="belt-header">
+                        <div style="display:flex; align-items:center;">
+                            <div class="belt-visual b-white"></div>
+                            <h4>BRANCA (Início)</h4>
+                        </div>
+                        <i class="fas fa-chevron-down"></i>
                     </div>
-                    <button onclick="openModal('calendarModal')" class="app-btn" style="width:100%; margin-top:10px; background:rgba(243, 125, 29, 0.2); border-color:var(--primary); color:var(--primary);"><i class="fas fa-calendar-star"></i> Campeonatos 2026</button>
+                    <div class="belt-details">
+                        <div class="variation-row"><div class="belt-visual b-white"></div><span class="variation-name">Faixa Branca</span><span class="variation-info">4 Graus</span></div>
+                    </div>
                 </div>
 
-                <div class="points-highlight" onclick="openModal('rulesModal')">
-                    <span class="tool-label" style="color:rgba(255,255,255,0.7); margin-bottom:5px;">CLUBE DE VANTAGENS</span>
-                    <div class="points-main">
-                        <div class="big-points">60</div>
-                        <div class="points-label">PONTOS POR<br>AMIGO</div>
+                <div class="belt-card" onclick="toggleBelt(this)">
+                    <div class="belt-header">
+                        <div style="display:flex; align-items:center;">
+                            <div class="belt-visual b-grey"></div>
+                            <h4>GRUPO CINZA (4 a 15 Anos)</h4>
+                        </div>
+                        <i class="fas fa-chevron-down"></i>
                     </div>
-                    <div class="points-desc">Ganhe <strong>+10</strong> indicando no App e <strong>+50</strong> na matrícula.</div>
-                    <div class="app-warning">
-                        <i class="fas fa-exclamation-circle" style="color:#f1c40f"></i>
-                        <span>Use o botão <strong>"Indicar Amigo"</strong> no App.</span>
+                    <div class="belt-details">
+                        <div class="variation-row"><div class="belt-visual b-grey-white"></div><span class="variation-name">Cinza e Branca</span><span class="variation-info">4 Graus</span></div>
+                        <div class="variation-row"><div class="belt-visual b-grey"></div><span class="variation-name">Cinza Lisa</span><span class="variation-info">4 Graus</span></div>
+                        <div class="variation-row"><div class="belt-visual b-grey-black"></div><span class="variation-name">Cinza e Preta</span><span class="variation-info">4 Graus</span></div>
                     </div>
-                    <button class="btn" style="color:#aaa; text-decoration:underline; background:none; border:none; padding:0; cursor:pointer;" onclick="openModal('rulesModal')">+ Ler Regulamento Completo & Resgates</button>
+                </div>
+
+                <div class="belt-card" onclick="toggleBelt(this)">
+                    <div class="belt-header">
+                        <div style="display:flex; align-items:center;">
+                            <div class="belt-visual b-yellow"></div>
+                            <h4>GRUPO AMARELO (7 a 15 Anos)</h4>
+                        </div>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="belt-details">
+                        <div class="variation-row"><div class="belt-visual b-yellow-white"></div><span class="variation-name">Amarela e Branca</span><span class="variation-info">4 Graus</span></div>
+                        <div class="variation-row"><div class="belt-visual b-yellow"></div><span class="variation-name">Amarela Lisa</span><span class="variation-info">4 Graus</span></div>
+                        <div class="variation-row"><div class="belt-visual b-yellow-black"></div><span class="variation-name">Amarela e Preta</span><span class="variation-info">4 Graus</span></div>
+                    </div>
+                </div>
+
+                <div class="belt-card" onclick="toggleBelt(this)">
+                    <div class="belt-header">
+                        <div style="display:flex; align-items:center;">
+                            <div class="belt-visual b-orange"></div>
+                            <h4>GRUPO LARANJA (10 a 15 Anos)</h4>
+                        </div>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="belt-details">
+                        <div class="variation-row"><div class="belt-visual b-orange-white"></div><span class="variation-name">Laranja e Branca</span><span class="variation-info">4 Graus</span></div>
+                        <div class="variation-row"><div class="belt-visual b-orange"></div><span class="variation-name">Laranja Lisa</span><span class="variation-info">4 Graus</span></div>
+                        <div class="variation-row"><div class="belt-visual b-orange-black"></div><span class="variation-name">Laranja e Preta</span><span class="variation-info">4 Graus</span></div>
+                    </div>
+                </div>
+
+                <div class="belt-card" onclick="toggleBelt(this)">
+                    <div class="belt-header">
+                        <div style="display:flex; align-items:center;">
+                            <div class="belt-visual b-green"></div>
+                            <h4>GRUPO VERDE (13 a 15 Anos)</h4>
+                        </div>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="belt-details">
+                        <div class="variation-row"><div class="belt-visual b-green-white"></div><span class="variation-name">Verde e Branca</span><span class="variation-info">4 Graus</span></div>
+                        <div class="variation-row"><div class="belt-visual b-green"></div><span class="variation-name">Verde Lisa</span><span class="variation-info">4 Graus</span></div>
+                        <div class="variation-row"><div class="belt-visual b-green-black"></div><span class="variation-name">Verde e Preta</span><span class="variation-info">4 Graus</span></div>
+                    </div>
                 </div>
             </div>
 
-            <div class="right-col">
-                <h4>Documentos & Comunidade</h4>
-                <div class="tools-box">
-                    <span class="tool-label">WHATSAPP</span>
-                    <div class="app-grid" style="margin-bottom:20px;">
-                        <a href="https://chat.whatsapp.com/INs7OCVwJ2K3LOlhTUvjs7" target="_blank" rel="noopener noreferrer" class="whatsapp-compact">
-                            <i class="fab fa-whatsapp"></i> Grupo Geral
-                        </a>
-                        <a href="https://chat.whatsapp.com/BeVJMKmNtIPLiE66ECHix8" target="_blank" rel="noopener noreferrer" class="whatsapp-compact parents">
-                            <i class="fab fa-whatsapp"></i> Avisos Pais
-                        </a>
-                    </div>
-                </div>
+            <div style="margin: 30px 0; border-top: 1px solid #333;"></div>
 
-                <div class="tools-box">
-                    <span class="tool-label">DOCUMENTOS</span>
-                    <div class="docs-list" style="background:rgba(255,255,255,0.05); border-radius:10px;">
-                        <a href="#" onclick="openModal('competitionModal'); return false;"><i class="fas fa-trophy"></i> Regras de Campeonatos</a>
-                        <a href="#" onclick="openModal('tatameRulesModal'); return false;"><i class="fas fa-tshirt"></i> Regras de Vestimentas</a>
-                        <a href="#" onclick="openModal('termModal'); return false;"><i class="fas fa-file-contract"></i> Termo de Responsabilidade</a>
-                        <a href="https://drive.google.com/drive/folders/163w9vgQTpDoezlB69J9eIFki2b7RdlIM" target="_blank" rel="noopener noreferrer"><i class="fas fa-shield-alt"></i> The Kings x Bullying</a>
-                    </div>
+            <p class="belt-desc-text">
+                <strong>JUVENIL E ADULTO (16+ Anos):</strong> O tempo mínimo abaixo é uma exigência da regra (IBJJF), mas a graduação depende exclusivamente da avaliação técnica e comportamental do Professor.
+            </p>
+
+            <div class="belt-grid">
+                <div class="belt-card" onclick="toggleBelt(this)">
+                    <div class="belt-header"><div style="display:flex; align-items:center;"><div class="belt-visual b-white"></div><h4>BRANCA</h4></div><i class="fas fa-chevron-down"></i></div>
+                    <div class="belt-details"><div class="variation-row"><div class="belt-visual b-white"></div><span class="variation-name">Branca</span><span class="variation-info">4 Graus (Tempo Livre)</span></div></div>
+                </div>
+                <div class="belt-card" onclick="toggleBelt(this)">
+                    <div class="belt-header"><div style="display:flex; align-items:center;"><div class="belt-visual b-blue"></div><h4>AZUL</h4></div><i class="fas fa-chevron-down"></i></div>
+                    <div class="belt-details"><div class="variation-row"><div class="belt-visual b-blue"></div><span class="variation-name">Azul</span><span class="variation-info">4 Graus (Min 2 Anos)</span></div></div>
+                </div>
+                <div class="belt-card" onclick="toggleBelt(this)">
+                    <div class="belt-header"><div style="display:flex; align-items:center;"><div class="belt-visual b-purple"></div><h4>ROXA</h4></div><i class="fas fa-chevron-down"></i></div>
+                    <div class="belt-details"><div class="variation-row"><div class="belt-visual b-purple"></div><span class="variation-name">Roxa</span><span class="variation-info">4 Graus (Min 1.5 Anos)</span></div></div>
+                </div>
+                <div class="belt-card" onclick="toggleBelt(this)">
+                    <div class="belt-header"><div style="display:flex; align-items:center;"><div class="belt-visual b-brown"></div><h4>MARROM</h4></div><i class="fas fa-chevron-down"></i></div>
+                    <div class="belt-details"><div class="variation-row"><div class="belt-visual b-brown"></div><span class="variation-name">Marrom</span><span class="variation-info">4 Graus (Min 1 Ano)</span></div></div>
+                </div>
+                <div class="belt-card" onclick="toggleBelt(this)">
+                    <div class="belt-header"><div style="display:flex; align-items:center;"><div class="belt-visual b-black black-rank"></div><h4>PRETA</h4></div><i class="fas fa-chevron-down"></i></div>
+                    <div class="belt-details"><div class="variation-row"><div class="belt-visual b-black black-rank"></div><span class="variation-name">Preta</span><span class="variation-info">Graus por Tempo (CBJJ)</span></div></div>
                 </div>
             </div>
         </div>
     </section>
 
     <footer>
-        <img src="logo.png" alt="Logo" style="width:50px; border-radius:50%; border:2px solid var(--primary); margin-bottom:15px;">
-        <p>THE KINGS ACADEMY © 2026</p>
+        <img src="logo.png" alt="Logo" style="width:50px; border-radius:50%; border:2px solid var(--primary);">
+        <p style="margin-top:10px;">THE KINGS ACADEMY © 2026</p>
         <div class="socials">
-            <a href="https://instagram.com/thekingskw" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
-            <a href="https://wa.me/5511951945648" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i></a>
+            <a href="https://instagram.com/thekingskw"><i class="fab fa-instagram"></i></a>
+            <a href="https://wa.me/5511951945648"><i class="fab fa-whatsapp"></i></a>
         </div>
-        
-        <p class="disclaimer">
-            Aviso de Privacidade: Esta página é estritamente informativa e não armazena dados pessoais, financeiros ou cadastrais de alunos, pais ou responsáveis em servidores externos. A validação de acesso é realizada localmente.
-        </p>
     </footer>
+
+    <div id="calendarModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal('calendarModal')">×</span>
+            <h2 class="section-title-mod">Calendário 2026</h2>
+            <p style="font-size:0.75rem; color:var(--primary); font-weight:700; margin-bottom:20px; border-left:3px solid var(--primary); padding-left:10px;">Os campeonatos que irão participar dependerá das decisões internas entre os professores, pais e alunos.</p>
+            <div id="championshipsList"></div>
+        </div>
+    </div>
 
     <div id="scheduleModal" class="modal">
         <div class="modal-content">
-            <button class="close-modal" onclick="closeModal('scheduleModal')">×</button>
-            <h2 style="font-family:'Montserrat'; margin-bottom:10px;">Grade de Horários</h2>
+            <span class="close-modal" onclick="closeModal('scheduleModal')">×</span>
+            <h2 class="section-title-mod" style="text-align:center;">Grade de Horários</h2>
             
             <div style="background:#f8f9fa; padding:10px; border-radius:10px; margin-bottom:20px; display:flex; justify-content:space-between; align-items:center;">
                 <div style="display:flex; align-items:center; gap:8px;">
@@ -695,147 +561,36 @@
             <ul class="class-list" id="today-list" style="margin-bottom:25px;"></ul>
 
             <div style="border-top:1px solid #eee; padding-top:20px;">
-                <label class="tool-label" style="color:#333;">VISUALIZAR GRADE COMPLETA (TEXTO):</label>
-                <select id="modalScheduleSelect" onchange="updateModalView()" style="width: 100%; padding: 12px; border-radius: 10px; border: 1px solid #ddd; font-family: 'Poppins'; font-weight:600;">
-                    <option value="today">Aulas de Hoje (Automático)</option>
-                    <option value="jiujitsu">Jiu-Jitsu (Semana Completa)</option>
-                    <option value="muaythai">Muay Thai (Semana Completa)</option>
-                    <option value="boxe">Boxe (Semana Completa)</option>
+                <label style="font-size:0.75rem; font-weight:700; color:#333;">VISUALIZAR GRADE COMPLETA:</label>
+                <select id="modalScheduleSelect" onchange="updateModalView()" style="width: 100%; padding: 12px; border-radius: 10px; border: 1px solid #ddd; font-family: 'Poppins'; margin-top:5px;">
+                    <option value="today">Aulas de Hoje</option>
+                    <option value="jiujitsu">Jiu-Jitsu</option>
+                    <option value="muaythai">Muay Thai</option>
+                    <option value="boxe">Boxe</option>
                 </select>
             </div>
-
-            <div id="modalFullScheduleContainer" style="display:none; margin-top:20px; border:1px solid #eee; padding:15px; border-radius:12px;"></div>
-        </div>
-    </div>
-
-    <div id="downloadModal" class="modal">
-        <div class="modal-content" style="text-align:center;">
-            <button class="close-modal" onclick="closeModal('downloadModal')">×</button>
-            <h2 style="font-family:'Montserrat'; margin-bottom:10px;">Baixe o App do Aluno</h2>
-            <p style="color:#666; font-size:0.9rem; margin-bottom:25px;">
-                Para fazer check-in nas aulas, baixe o app <strong>"Next Fit"</strong>.<br><br>
-                <strong>Login:</strong> Utilize o seu CPF.<br>
-                <strong>Senha:</strong> Se for o primeiro acesso, clique em "Recuperar/Criar Senha".
-            </p>
-            
-            <div style="display:flex; justify-content:center; gap:15px; flex-wrap:wrap;">
-                <a href="https://apps.apple.com/br/app/next-fit/id1360859531" target="_blank" class="btn btn-dark">
-                    <i class="fab fa-apple" style="font-size:1.2rem; margin-right:5px;"></i> App Store
-                </a>
-                <a href="https://play.google.com/store/apps/details?id=br.com.fitastic.appaluno" target="_blank" class="btn btn-dark">
-                    <i class="fab fa-google-play" style="font-size:1.1rem; margin-right:5px;"></i> Google Play
-                </a>
-            </div>
-        </div>
-    </div>
-
-    <div id="tatameRulesModal" class="modal">
-        <div class="modal-content">
-            <span class="close-modal" onclick="closeModal('tatameRulesModal')">×</span>
-            <h2 style="font-family:'Montserrat'; text-align:center;">Regras & Conduta</h2>
-            
-            <h4 style="margin-top:20px;">VESTIMENTAS OBRIGATÓRIAS</h4>
-            <div class="gear-list">
-                <div class="gear-item">
-                    <span class="gear-title">Jiu-Jitsu (Gi)</span>
-                    <span class="gear-desc">Kimono Completo + Faixa.</span>
-                    <span class="gear-accessories">Obrigatório: Rashguard ou Camiseta preta por baixo do Kimono.</span>
-                </div>
-                <div class="gear-item">
-                    <span class="gear-title">NoGi (Sem Kimono)</span>
-                    <span class="gear-desc">Rashguard (ou camiseta preta) + Bermuda Folgada.</span>
-                    <span class="gear-accessories"><strong>Regra de Modéstia:</strong> Não é permitido o uso de roupas coladas sem bermuda por cima.</span>
-                </div>
-                <div class="gear-item">
-                    <span class="gear-title">Muay Thai & Boxe</span>
-                    <span class="gear-desc">Bermuda e Camiseta (Mulheres: Top por baixo).</span>
-                    <span class="gear-accessories"><strong>Equipamentos:</strong> Luvas, Bandagem, Protetor Bucal e Caneleira.</span>
-                </div>
-            </div>
-
-            <h4 style="margin-top:30px;">GUIA VISUAL</h4>
-            <div class="visual-rules">
-                <div class="rule-card" style="border-color:#00b894; background:rgba(0,184,148,0.05);">
-                    <span style="color:#00b894; font-weight:800; font-size:0.75rem; display:block; margin-bottom:5px;">PERMITIDO (EXEMPLO)</span>
-                    <div class="rule-img-container">
-                        <img class="slide" src="https://placehold.co/400x300/e0f2f1/00695c?text=Kimono+Padrao+BR" style="opacity:1; animation:none;">
-                    </div>
-                    <p style="font-size:0.7rem; color:#555; margin-top:5px;">Kimono Branco/Azul/Preto com Patch oficial.</p>
-                </div>
-                <div class="rule-card" style="border-color:#ff7675; background:rgba(255,118,117,0.05);">
-                    <span style="color:#ff7675; font-weight:800; font-size:0.75rem; display:block; margin-bottom:5px;">PROIBIDO</span>
-                    <div class="rule-img-container">
-                        <img class="slide" src="https://placehold.co/400x300/ffebee/c62828?text=Kimono+Sujo+ou+Rasgado" style="opacity:1; animation:none;">
-                    </div>
-                    <p style="font-size:0.7rem; color:#555; margin-top:5px;">Kimono sujo, rasgado ou de cor diferente.</p>
-                </div>
-            </div>
-
-            <div class="parents-note">
-                <i class="fas fa-user-friends"></i>
-                <div>
-                    <strong>Recado aos Pais:</strong>
-                    <p>Antes de vir para o treino, dê aquela conferida rápida se o uniforme do seu pequeno está completo e adequado.</p>
-                </div>
-            </div>
-
-            <h4 style="margin-top:30px;">CÓDIGO DE CONDUTA</h4>
-            <div class="rules-list-item">
-                <span class="rules-title"><i class="fas fa-hands-wash"></i> 1. Higiene</span>
-                <ul class="rules-sub-list">
-                    <li><b>Uniforme limpo:</b> Use sempre kimono (gi) ou roupa adequada e higienizada.</li>
-                    <li><b>Unhas curtas:</b> Mantenha unhas das mãos e pés aparadas.</li>
-                    <li><b>Sem calçados:</b> Nunca pise no tatame com tênis ou chinelos. Use chinelos apenas fora da área de luta para transitar.</li>
-                </ul>
-            </div>
-
-            <div class="rules-list-item">
-                <span class="rules-title"><i class="fas fa-door-open"></i> 2. Ao Entrar e Sair</span>
-                <ul class="rules-sub-list">
-                    <li><b>Cumprimente (Reverência):</b> Faça uma saudação (bow) ao entrar e sair do tatame.</li>
-                    <li><b>Permissão:</b> Se chegar atrasado, aguarde a permissão do professor antes de subir.</li>
-                    <li><b>Ordem:</b> Cumprimente o professor e, em seguida, os alunos por ordem de faixa.</li>
-                </ul>
-            </div>
-
-            <div class="rules-list-item">
-                <span class="rules-title"><i class="fas fa-handshake"></i> 3. Respeito</span>
-                <ul class="rules-sub-list">
-                    <li><b>Não pise nas faixas:</b> Respeite seu material e o dos colegas.</li>
-                    <li><b>Silêncio e Foco:</b> Evite conversas paralelas e preste atenção às explicações do professor.</li>
-                    <li><b>Hierarquia:</b> Trate faixas pretas e instrutores como Mestre, Sensei ou Professor.</li>
-                    <li><b>Sem comida/bebida:</b> Proibido comer ou beber no tatame.</li>
-                    <li><b>Atenção:</b> Evite atitudes agressivas desnecessárias.</li>
-                </ul>
-            </div>
-
-            <div class="rules-list-item">
-                <span class="rules-title"><i class="fas fa-user-shield"></i> 4. Segurança</span>
-                <ul class="rules-sub-list">
-                    <li><b>"Tap" (Desistir):</b> Respeite o sinal de desistência do colega imediatamente. Bata no colega, no tatame ou fale "tap".</li>
-                    <li><b>Limpeza:</b> Se suar excessivamente, limpe-se fora. Se houver sangue, limpe o local.</li>
-                    <li><b>Saída:</b> Peça licença ao professor para sair.</li>
-                </ul>
-            </div>
-
-            <button class="btn btn-primary" onclick="closeModal('tatameRulesModal')" style="width:100%; margin-top:10px;">LI E CONCORDO</button>
+            <div id="modalFullScheduleContainer" style="display:none; margin-top:20px;"></div>
         </div>
     </div>
 
     <div id="investimentosModal" class="modal">
         <div class="modal-content">
             <span class="close-modal" onclick="closeModal('investimentosModal')">×</span>
-            <h2 style="font-family:'Montserrat'; text-align:center;">Investimentos & Custos</h2>
+            <h2 class="section-title-mod" style="text-align:center;">Investimentos & Padrão</h2>
             
-            <div class="modal-tabs" style="font-size: 0.7rem;">
+            <div style="background:#ffebee; color:#c0392b; padding:15px; border-radius:8px; border-left:5px solid #c0392b; margin-bottom:20px; font-size:0.85rem;">
+                <i class="fas fa-exclamation-triangle"></i> <strong>ATENÇÃO HUBS:</strong><br>
+                A compra de Kimonos, Faixas e a realização de Graduações são feitas <strong>EXCLUSIVAMENTE</strong> através da Matriz The Kings. É proibida a venda paralela.
+            </div>
+
+            <div class="modal-tabs">
                 <button class="tab-btn active" onclick="openPlanTab('uniforme')">UNIFORME JJ</button>
                 <button class="tab-btn" onclick="openPlanTab('graduacao')">GRADUAÇÃO JJ</button>
-                <button class="tab-btn" onclick="openPlanTab('boxe')">BOXE/MUAYTHAI</button>
                 <button class="tab-btn" onclick="openPlanTab('custos')">CUSTOS EXTRAS</button>
             </div>
 
             <div id="tab-uniforme" class="tab-content active">
-                <div class="metodologia-box" style="border-left: 4px solid var(--primary);">
+                <div class="metodologia-box" style="border-left: 4px solid var(--primary); margin-bottom:20px;">
                     <span class="met-title">PADRONIZAÇÃO OBRIGATÓRIA</span>
                     <ul class="rules-sub-list" style="margin-top:10px;">
                         <li><strong>Campeonatos Federados:</strong> Obrigatório Kimono <b>Brazilian Roots</b> com Patch <b>The Kings</b>.</li>
@@ -843,28 +598,13 @@
                     </ul>
                 </div>
 
-                <div class="rules-list-item">
-                    <span class="rules-title"><i class="fas fa-tshirt"></i> KIMONO EXCLUSIVO THE KINGS</span>
-                    
+                <div class="bordered-card">
+                    <span class="rules-title">KIMONO EXCLUSIVO THE KINGS</span>
                     <table class="price-table-uniforme">
-                        <thead>
-                            <tr>
-                                <th>MODELO</th>
-                                <th>6x SEM JUROS</th>
-                                <th style="background:#00b894;">PIX (OFERTA)</th>
-                            </tr>
-                        </thead>
+                        <thead><tr><th>MODELO</th><th>6x SEM JUROS</th><th style="background:#00b894; color:white;">PIX</th></tr></thead>
                         <tbody>
-                            <tr>
-                                <td><strong>ADULTO</strong></td>
-                                <td class="highlight-anchor">R$ 395,00</td>
-                                <td class="highlight-green">R$ 360,00</td>
-                            </tr>
-                            <tr>
-                                <td><strong>KIDS</strong></td>
-                                <td class="highlight-anchor">R$ 300,00</td>
-                                <td class="highlight-green">R$ 275,00</td>
-                            </tr>
+                            <tr><td><strong>ADULTO</strong></td><td>R$ 395,00</td><td class="highlight-green">R$ 360,00</td></tr>
+                            <tr><td><strong>KIDS</strong></td><td>R$ 300,00</td><td class="highlight-green">R$ 275,00</td></tr>
                         </tbody>
                     </table>
                     <p style="font-size:0.7rem; color:#888; text-align:center; margin-top:5px;">*Parcelamento em 10x a 12x: Adulto R$ 430 | Kids R$ 330</p>
@@ -872,9 +612,7 @@
 
                 <div class="dropdown-table" style="margin-bottom:15px;">
                     <details>
-                        <summary style="font-weight:700; color:#555; text-align:center; padding:10px; cursor:pointer;">
-                            <i class="fas fa-ruler"></i> VER TABELA DE TAMANHOS
-                        </summary>
+                        <summary><i class="fas fa-ruler" style="margin-right:8px;"></i> VER TABELA DE TAMANHOS</summary>
                         <div style="background:#fff; border:1px solid #eee; padding:10px; font-size:0.8rem;">
                             <table class="price-table">
                                 <tr><td><b>M00</b></td><td>Abaixo de 1,00m</td></tr>
@@ -894,15 +632,15 @@
                     </details>
                 </div>
 
-                <div class="reform-box">
-                    <span class="reform-title"><i class="fas fa-sync-alt"></i> Padronização (Reforma)</span>
+                <div class="bordered-card" style="border:2px dashed var(--primary); background:#fff5f0; text-align: center;">
+                    <span class="reform-title" style="margin-bottom:5px;">Padronização (Reforma)</span>
                     <span class="reform-desc">Aplicação do Kit DTF The Kings (Costas, Peito e Barra). <br><strong>*Não realizamos a retirada de patches anteriores.</strong></span>
-                    <div style="font-weight:700; color:#333;">
-                        2x R$ 47,50 <span style="color:#aaa; font-weight:400;">ou</span> <span style="color:#00b894;">R$ 85,00 (Pix)</span>
+                    <div style="font-weight:800; color:#333; margin-top:5px; font-size:0.9rem; text-align: center; width: 100%;">
+                        2x R$ 47,50 <span style="color:#aaa; font-weight:400;">ou</span> <span class="highlight-green">R$ 85,00 (Pix)</span>
                     </div>
                 </div>
 
-                <div class="rules-list-item" style="border:none; padding-left:0; text-align:center; background:#f8f9fa; padding:10px; border-radius:8px;">
+                <div class="rules-list-item" style="border:none; padding-left:0; text-align:center; background:#f8f9fa; padding:10px; border-radius:8px; margin-top: 15px;">
                     <span style="font-weight:700; color:#333;">FAIXA BRANCA SIMPLES:</span> <span style="color:var(--primary); font-weight:800;">R$ 85,00</span>
                 </div>
 
@@ -912,30 +650,22 @@
                     <p style="font-size:0.8rem; background:#eee; padding:8px; border-radius:5px;"><strong>Sinal:</strong> 50% no pedido + 50% na entrega (Pix/Dinheiro) <strong>OU</strong> Valor total parcelado no ato.</p>
                 </div>
 
-                <a href="https://wa.me/5511951945648?text=Ol%C3%A1%2C%20gostaria%20de%20encomendar%20meu%20uniforme%20(Kimono%2Ffaixa)" target="_blank" class="btn btn-success" style="width:100%; margin-top:10px;">
+                <a href="https://wa.me/5511951945648?text=Ol%C3%A1%2C%20gostaria%20de%20encomendar%20meu%20uniforme%20(Kimono%2Ffaixa)" target="_blank" class="btn btn-primary" style="width:100%; margin-top:10px;">
                     <i class="fab fa-whatsapp"></i> FAZER PEDIDO NO WHATSAPP
                 </a>
             </div>
 
             <div id="tab-graduacao" class="tab-content">
-                <div class="metodologia-box" style="border-left: 4px solid var(--dark);">
+                <div class="metodologia-box" style="border-left: 4px solid var(--dark); margin-bottom:20px;">
                     <span class="met-title">NOSSA LINHAGEM</span>
                     <p class="met-text" style="margin-bottom:10px;">A <strong>The Kings</strong> é liderada pelo <strong>Professor Jonathan Willy</strong> (Faixa Preta).</p>
                     <p class="met-text">Em competições oficiais e graduações, somos filiados e representamos a equipe <strong>Brazilian Roots</strong>, liderada pelo <strong>Sensei Fernandinho</strong>.</p>
                 </div>
 
-                <div class="rules-list-item">
-                    <span class="rules-title"><i class="fas fa-graduation-cap"></i> SISTEMA DE GRADUAÇÃO</span>
-                    <p style="font-size:0.9rem; color:#555; margin-bottom:15px;">A troca de faixas de Jiu-Jitsu é realizada <strong>anualmente</strong> pela Equipe Brazilian Roots, com data, horário e local definidos por eles.</p>
-                    
-                    <span class="rules-title"><i class="fas fa-list-ol"></i> INVESTIMENTO GRADUAÇÃO</span>
+                <div class="bordered-card">
+                    <span class="rules-title">INVESTIMENTO GRADUAÇÃO</span>
                     <table class="price-table-uniforme">
-                        <thead>
-                            <tr>
-                                <th>NÍVEL</th>
-                                <th>VALOR</th>
-                            </tr>
-                        </thead>
+                        <thead><tr><th>NÍVEL</th><th>VALOR</th></tr></thead>
                         <tbody>
                             <tr><td>Faixa Colorida (Kids)</td><td class="highlight-anchor">R$ 350,00</td></tr>
                             <tr><td>Faixa Azul / Roxa</td><td class="highlight-anchor">R$ 600,00</td></tr>
@@ -947,268 +677,106 @@
                 </div>
             </div>
 
-            <div id="tab-boxe" class="tab-content">
-                <div class="rules-list-item">
-                    <span class="rules-title"><i class="fas fa-box-open"></i> EQUIPAMENTOS</span>
-                    <table class="price-table-uniforme">
-                        <thead>
-                            <tr>
-                                <th>ITEM</th>
-                                <th>VALOR</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr><td>Bermuda Muay Thai</td><td>A Definir</td></tr>
-                            <tr><td>Camiseta Treino</td><td>A Definir</td></tr>
-                            <tr><td>Protetor Bucal</td><td>A Definir</td></tr>
-                        </tbody>
-                    </table>
-                </div>
-
-                <div class="rules-list-item">
-                    <span class="rules-title"><i class="fas fa-certificate"></i> GRADUAÇÃO MUAY THAI</span>
-                    <p style="font-size:0.8rem; color:#666; margin-bottom:10px;">Sistema de Cores (Prajiouds) padrão CBMT/CMTB.</p>
-                    
-                    <div class="dropdown-table">
-                        <details>
-                            <summary style="font-weight:700; color:#555; text-align:center; padding:10px; cursor:pointer;">
-                                <i class="fas fa-eye"></i> VER LISTA DE CORES
-                            </summary>
-                            <div style="background:#fff; border:1px solid #eee; padding:10px; font-size:0.8rem;">
-                                <table class="price-table">
-                                    <tr><td>Branca (Iniciante)</td><td>A Definir</td></tr>
-                                    <tr><td>Branca pta Vermelha</td><td>A Definir</td></tr>
-                                    <tr><td>Vermelha</td><td>A Definir</td></tr>
-                                    <tr><td>Vermelha pta Azul</td><td>A Definir</td></tr>
-                                    <tr><td>Azul</td><td>A Definir</td></tr>
-                                    <tr><td>Azul pta Escura</td><td>A Definir</td></tr>
-                                    <tr><td>Azul Escura (Instrutor)</td><td>A Definir</td></tr>
-                                    <tr><td>Azul Escura pta Preta</td><td>A Definir</td></tr>
-                                    <tr><td>Preta (Professor)</td><td>A Definir</td></tr>
-                                    <tr><td>Preta e Branca (Mestre)</td><td>A Definir</td></tr>
-                                </table>
-                            </div>
-                        </details>
-                    </div>
-                </div>
-            </div>
-
             <div id="tab-custos" class="tab-content">
-                <p style="font-size:0.8rem; color:#666; margin-bottom:20px;">Diretrizes financeiras para atletas em competições.</p>
-
-                <div class="rules-list-item">
-                    <span class="rules-title"><i class="fas fa-bus"></i> 1. Custos & Logística</span>
+                <div class="bordered-card">
+                    <span class="rules-title">Logística & Coach</span>
                     <ul class="rules-sub-list">
                         <li><b>Despesas do Coach:</b> Para ter um coach, os alunos devem ratear os custos (Passagem, Alimentação, Hospedagem).</li>
                         <li><b>Locomoção:</b> Inclui trajeto até o destino e deslocamentos internos até o estádio.</li>
                         <li><b>Divisão:</b> O valor é dividido entre os pais/alunos participantes da mesma competição.</li>
                     </ul>
                 </div>
-
-                <div class="rules-list-item">
-                    <span class="rules-title"><i class="fas fa-wallet"></i> 2. Custos do Atleta</span>
+                <div class="bordered-card">
+                    <span class="rules-title">Custos do Atleta</span>
                     <ul class="rules-sub-list">
-                        <li><b>Responsabilidade:</b> Inscrição, taxas de filiação à federação e outros custos são de responsabilidade do próprio aluno/pais.</li>
-                    </ul>
-                </div>
-
-                <div class="rules-list-item">
-                    <span class="rules-title"><i class="fas fa-user-check"></i> 3. Lutar sem Coach</span>
-                    <ul class="rules-sub-list">
-                        <li><b>Autorização:</b> Permitido apenas com autorização prévia do professor representante.</li>
+                        <li><b>Responsabilidade:</b> Inscrição, taxas de filiação à federação e outros custos são de responsabilidade do próprio aluno.</li>
                     </ul>
                 </div>
             </div>
         </div>
     </div>
 
-    <div id="termModal" class="modal">
+    <div id="tatameRulesModal" class="modal">
         <div class="modal-content">
-            <span class="close-modal" onclick="closeModal('termModal')">×</span>
-            <h2 style="font-family:'Montserrat'; margin-bottom:20px;">Termo de Responsabilidade</h2>
+            <span class="close-modal" onclick="closeModal('tatameRulesModal')">×</span>
+            <h2 class="section-title-mod" style="text-align:center;">Regras & Conduta</h2>
             
-            <div class="rules-list-item" style="border:none; padding:0;">
-                <p style="font-size:0.9rem; color:#333; margin-bottom:20px;">
-                    Eu, na qualidade de aluno(a) ou responsável legal pelo(a) menor matriculado(a), declaro para os devidos fins de direito que tenho pleno conhecimento dos termos abaixo:
-                </p>
-
-                <span class="rules-title">1. DECLARAÇÃO DE SAÚDE</span>
-                <p style="font-size:0.9rem; color:#555; margin-bottom:15px;">
-                    Declaro estar em perfeitas condições de saúde física e mental para a prática de artes marciais. Atesto que fui submetido a avaliação médica (ou assumo a responsabilidade por não tê-la feito) e isento a <strong>The Kings Academy</strong> de responsabilidade sobre o agravamento de lesões ou condições preexistentes não informadas.
-                </p>
-
-                <span class="rules-title">2. CIÊNCIA DOS RISCOS (ALTO CONTATO)</span>
-                <p style="font-size:0.9rem; color:#555; margin-bottom:10px;">
-                    Estou ciente de que a prática de artes marciais (incluindo <strong>Jiu-Jitsu</strong>, <strong>Muay Thai</strong> e <strong>Boxe</strong>) é uma atividade física de contato que envolve riscos inerentes, tais como:
-                </p>
-                <ul class="rules-sub-list">
-                    <li>Lesões musculares e articulares.</li>
-                    <li>Contusões, hematomas e escoriações.</li>
-                    <li>Riscos de queda e impacto.</li>
-                </ul>
-                <p style="font-size:0.9rem; color:#555; margin-top:10px; margin-bottom:15px;">
-                    Entendo que, mesmo com o uso correto dos equipamentos e supervisão do <strong>Professor Jonathan Willy</strong>, o risco não pode ser totalmente anulado, e aceito participar voluntariamente.
-                </p>
-
-                <span class="rules-title">3. CONDUTA E SEGURANÇA</span>
-                <p style="font-size:0.9rem; color:#555;">
-                    Comprometo-me a seguir rigorosamente as orientações do professor, utilizar os equipamentos de proteção obrigatórios e manter uma conduta respeitosa, preservando a integridade física dos meus colegas de treino.
-                </p>
-            </div>
-
-            <button class="btn btn-primary" onclick="closeModal('termModal')" style="width:100%; margin-top:10px;">LI E ESTOU CIENTE</button>
-        </div>
-    </div>
-
-    <div id="competitionModal" class="modal">
-        <div class="modal-content">
-            <span class="close-modal" onclick="closeModal('competitionModal')">×</span>
-            <h2 style="font-family:'Montserrat';">Regras de Competição 2026</h2>
-            <p style="font-size:0.8rem; color:#666; margin-bottom:20px;">Diretrizes para atletas The Kings / Brazilian Roots</p>
-
-            <div class="rules-list-item">
-                <span class="rules-title"><i class="fas fa-ruler-combined"></i> PADRÃO DE COMPETIÇÃO (IBJJF/FPJJ)</span>
-                <ul class="rules-sub-list">
-                    <li><b>Cores Permitidas:</b> Apenas Kimonos Branco, Azul Real ou Preto (Cor única, sem misturas).</li>
-                    <li><b>Medidas:</b> O kimono não pode estar justo. Deve haver uma folga mínima de 7cm nas mangas e calças.</li>
-                    <li><b>Patches:</b> Proibidos em locais de pegada (gola, joelhos). Devem estar costurados firmemente.</li>
-                </ul>
-                <div style="display:flex; gap:10px; margin-top:15px; flex-wrap:wrap;">
-                    <a href="https://www.fpjjcompetidor.com.br/tabela-de-pesos/" target="_blank" class="btn btn-outline" style="flex:1; font-size:0.7rem;">TABELA DE PESO FPJJ</a>
-                    <a href="https://ibjjf.com/uniform" target="_blank" class="btn btn-outline" style="flex:1; font-size:0.7rem;">REGRAS UNIFORME IBJJF</a>
+            <h4 style="margin-top:20px;">VESTIMENTAS OBRIGATÓRIAS</h4>
+            <div class="gear-list">
+                <div class="gear-item">
+                    <span class="gear-title">Jiu-Jitsu (Gi)</span>
+                    <span class="gear-desc">Kimono Completo + Faixa.</span>
+                    <span class="gear-accessories">Obrigatório: Rashguard ou Camiseta preta por baixo do Kimono.</span>
+                </div>
+                <div class="gear-item">
+                    <span class="gear-title">NoGi (Sem Kimono)</span>
+                    <span class="gear-desc">Rashguard (ou camiseta preta) + Bermuda Folgada.</span>
+                    <span class="gear-accessories"><strong>Regra de Modéstia:</strong> Não é permitido o uso de roupas coladas sem bermuda por cima.</span>
                 </div>
             </div>
 
-            <div class="rules-list-item">
-                <span class="rules-title"><i class="fas fa-bus"></i> 1. Custos & Logística</span>
-                <ul class="rules-sub-list">
-                    <li><b>Despesas do Coach:</b> Para ter um coach, os alunos devem ratear os custos (Passagem, Alimentação, Hospedagem).</li>
-                    <li><b>Locomoção:</b> Inclui trajeto até o destino e deslocamentos internos até o estádio.</li>
-                    <li><b>Divisão:</b> O valor é dividido entre os pais/alunos participantes da mesma competição.</li>
-                </ul>
-            </div>
-
-            <div class="rules-list-item">
-                <span class="rules-title"><i class="fas fa-wallet"></i> 2. Custos do Atleta</span>
-                <ul class="rules-sub-list">
-                    <li><b>Responsabilidade:</b> Inscrição, taxas de filiação à federação e outros custos são de responsabilidade do próprio aluno.</li>
-                </ul>
-            </div>
-
-            <div class="rules-list-item">
-                <span class="rules-title"><i class="fas fa-user-check"></i> 3. Lutar sem Coach</span>
-                <ul class="rules-sub-list">
-                    <li><b>Autorização:</b> Permitido apenas com autorização prévia do professor representante.</li>
-                    <li><b>Representação:</b> O aluno deve estar federado e representar a equipe "Brazilian Roots / The King's".</li>
-                    <li><b>Solicitação:</b> Deve ser comunicado antes de efetuar a inscrição.</li>
-                </ul>
-            </div>
-            
-            <button class="btn btn-primary" onclick="closeModal('competitionModal')" style="width:100%; margin-top:10px;">ENTENDI AS REGRAS</button>
-        </div>
-    </div>
-
-    <div id="rulesModal" class="modal">
-        <div class="modal-content">
-            <span class="close-modal" onclick="closeModal('rulesModal')">×</span>
-            <h2>Regulamento Clube</h2>
-            <div class="modal-body">
-                <h4>SEÇÃO I: FREQUÊNCIA</h4>
-                <ul>
-                    <li><strong>Obrigatoriedade:</strong> Presença só conta com check-in no App.</li>
-                    <li><strong>Janela:</strong> De 6h antes até 20 min após o início.</li>
-                </ul>
-
-                <h4>SEÇÃO II: ACÚMULO DE PONTOS</h4>
-                <ul>
-                    <li><strong>Indicação no App (Lead):</strong> 10 Pontos (Basta registrar o contato).</li>
-                    <li><strong>Matrícula Efetivada:</strong> 50 Pontos (Quando o amigo fecha).</li>
-                    <li><strong>Check-in realizado:</strong> 1 Ponto por aula.</li>
-                    <li><strong>Adesão Clube+:</strong> 50 Pontos bônus.</li>
-                    <li><strong>Aniversário:</strong> 10 Pontos bônus.</li>
-                </ul>
-
-                <h4>SEÇÃO III: RESGATES</h4>
-                <ul>
-                    <li><strong>Necessaire:</strong> 80 pts (Mín. 1 indicação).</li>
-                    <li><strong>Patch Peito:</strong> 150 pts.</li>
-                    <li><strong>Toalhinha:</strong> 180 pts.</li>
-                    <li><strong>Mensalidade Grátis:</strong> 300 pts (Mín. 2 indicações).</li>
-                    <li><strong>Relógio Laranja:</strong> 300 pts (Mín. 1 indicação).</li>
-                    <li><strong>Mochila:</strong> 500 pts (Mín. 3 indicações).</li>
-                    <li><strong>Kit Mochila + Necessaire:</strong> 580 pts.</li>
-                    <li><strong>15% OFF Anual:</strong> 1678 pts.</li>
-                </ul>
-                <button class="btn btn-primary" onclick="closeModal('rulesModal')" style="width:100%; margin-top:20px;">ENTENDI</button>
-            </div>
-        </div>
-    </div>
-
-    <div id="clubeModal" class="modal">
-        <div class="modal-content" style="max-width:450px;">
-            <span class="close-modal" onclick="closeModal('clubeModal')">×</span>
-            <div class="clube-popup-header">
-                <h2>Seja Clube+</h2>
-                <span style="font-size:0.9rem; opacity:0.8;">Condição exclusiva para alunos mensalistas. Preço de 2025 Mantido!</span>
-            </div>
-
-            <div class="plan-toggle">
-                <button class="toggle-btn active" onclick="switchPrice(this, 'kids')">KIDS (04-13)</button>
-                <button class="toggle-btn" onclick="switchPrice(this, 'adult')">ADULTO</button>
-            </div>
-
-            <div id="price-kids" class="price-view active">
-                <div class="price-highlight-box">
-                    <span class="price-label">PLANO KIDS</span>
-                    <span class="price-kids">12x R$ 79,90</span>
-                    <span style="display:block; font-size:0.8rem; color:#aaa; margin-bottom:15px;">(Valor total anual: R$ 958,80)</span>
-                    <span class="price-note">*Plano Anual: Valor total cobrado no limite do cartão.</span>
+            <h4 style="margin-top:30px;">GUIA VISUAL</h4>
+            <div class="visual-rules">
+                <div class="rule-card" style="border-color:#00b894; background:rgba(0,184,148,0.05);">
+                    <span style="color:#00b894; font-weight:800; font-size:0.75rem; display:block; margin-bottom:5px;">PERMITIDO</span>
+                    <div class="rule-img-container"><img class="slide" src="https://placehold.co/400x300/e0f2f1/00695c?text=Kimono+Padrao+BR" style="opacity:1; animation:none;"></div>
+                    <p style="font-size:0.7rem; color:#555; margin-top:5px;">Kimono Branco/Azul/Preto com Patch oficial.</p>
+                </div>
+                <div class="rule-card" style="border-color:#ff7675; background:rgba(255,118,117,0.05);">
+                    <span style="color:#ff7675; font-weight:800; font-size:0.75rem; display:block; margin-bottom:5px;">PROIBIDO</span>
+                    <div class="rule-img-container"><img class="slide" src="https://placehold.co/400x300/ffebee/c62828?text=Kimono+Sujo+ou+Rasgado" style="opacity:1; animation:none;"></div>
+                    <p style="font-size:0.7rem; color:#555; margin-top:5px;">Kimono sujo, rasgado ou de cor diferente.</p>
                 </div>
             </div>
 
-            <div id="price-adult" class="price-view">
-                <div class="price-highlight-box">
-                    <span class="price-label">PLANO ADULTO</span>
-                    <span class="price-adult">12x R$ 99,90</span>
-                    <span style="display:block; font-size:0.8rem; color:#aaa; margin-bottom:15px;">(Valor total anual: R$ 1.198,80)</span>
-                    <span class="price-note">*Plano Anual: Valor total cobrado no limite do cartão.</span>
-                </div>
-            </div>
-            
-            <ul class="clube-benefits">
-                <li><i class="fas fa-check-circle"></i> Jiu-Jitsu, NoGi, Muay Thai e Boxe</li>
-                <li><i class="fas fa-check-circle"></i> Isenção de Taxa de Matrícula</li>
-                <li><i class="fas fa-check-circle"></i> +50 Pontos no Clube de Recompensas</li>
-                <li><i class="fas fa-check-circle"></i> 1 Mês Grátis p/ Amigo (Voucher)</li>
-                <li><i class="fas fa-check-circle"></i> Trancamento até 60 dias</li>
-            </ul>
-
-            <div style="margin:20px 0;">
-                <div class="baby-note" style="text-align:center;">
-                    <i class="fas fa-info-circle"></i> <strong>Pais/Baby:</strong> Mais barato mesmo treinando só 2 modalidades.
-                </div>
+            <div class="parents-note">
+                <i class="fas fa-user-friends"></i>
+                <div><strong>Recado aos Pais:</strong><p>Antes de vir para o treino, dê aquela conferida rápida se o uniforme do seu pequeno está completo e adequado.</p></div>
             </div>
 
-            <a href="https://wa.me/5511951945648?text=Quero%20ser%20Clube%2B" class="btn btn-primary" style="width:100%;" target="_blank" rel="noopener noreferrer">QUERO SER CLUBE+</a>
-        </div>
-    </div>
-
-    <div id="calendarModal" class="modal">
-        <div class="modal-content">
-            <span class="close-modal" onclick="closeModal('calendarModal')">×</span>
-            <h2 style="font-family:'Montserrat'; margin-bottom: 20px;">Calendário 2026</h2>
-            <p style="font-size:0.85rem; color:#666; margin-bottom:20px;">Principais competições CBJJ e FPJJ.</p>
-            
-            <div id="championshipsList"></div>
-            
-            <p style="font-size:0.7rem; color:#999; margin-top:20px; text-align:center;">*Datas sujeitas a alteração pelas federações.</p>
+            <h4 style="margin-top:30px;">CÓDIGO DE CONDUTA</h4>
+            <div class="rules-list-item">
+                <span class="rules-title"><i class="fas fa-hands-wash"></i> 1. Higiene</span>
+                <ul class="rules-sub-list">
+                    <li><b>Uniforme limpo:</b> Use sempre kimono (gi) ou roupa adequada e higienizada.</li>
+                    <li><b>Unhas curtas:</b> Mantenha unhas das mãos e pés aparadas.</li>
+                    <li><b>Sem calçados:</b> Nunca pise no tatame com tênis ou chinelos. Use chinelos apenas fora da área de luta para transitar.</li>
+                </ul>
+            </div>
+            <div class="rules-list-item">
+                <span class="rules-title"><i class="fas fa-door-open"></i> 2. Ao Entrar e Sair</span>
+                <ul class="rules-sub-list">
+                    <li><b>Cumprimente (Reverência):</b> Faça uma saudação (bow) ao entrar e sair do tatame.</li>
+                    <li><b>Permissão:</b> Se chegar atrasado, aguarde a permissão do professor antes de subir.</li>
+                    <li><b>Ordem:</b> Cumprimente o professor e, em seguida, os alunos por ordem de faixa.</li>
+                </ul>
+            </div>
+            <div class="rules-list-item">
+                <span class="rules-title"><i class="fas fa-handshake"></i> 3. Respeito</span>
+                <ul class="rules-sub-list">
+                    <li><b>Não pise nas faixas:</b> Respeite seu material e o dos colegas.</li>
+                    <li><b>Silêncio e Foco:</b> Evite conversas paralelas e preste atenção às explicações do professor.</li>
+                    <li><b>Hierarquia:</b> Trate faixas pretas e instrutores como Mestre, Sensei ou Professor.</li>
+                    <li><b>Sem comida/bebida:</b> Proibido comer ou beber no tatame.</li>
+                    <li><b>Atenção:</b> Evite atitudes agressivas desnecessárias.</li>
+                </ul>
+            </div>
+            <div class="rules-list-item">
+                <span class="rules-title"><i class="fas fa-user-shield"></i> 4. Segurança</span>
+                <ul class="rules-sub-list">
+                    <li><b>"Tap" (Desistir):</b> Respeite o sinal de desistência do colega imediatamente. Bata no colega, no tatame ou fale "tap".</li>
+                    <li><b>Limpeza:</b> Se suar excessivamente, limpe-se fora. Se houver sangue, limpe o local.</li>
+                    <li><b>Saída:</b> Peça licença ao professor para sair.</li>
+                </ul>
+            </div>
+            <button class="btn btn-primary" onclick="closeModal('tatameRulesModal')" style="width:100%; margin-top:10px;">LI E CONCORDO</button>
         </div>
     </div>
 
     <div id="planModal" class="modal">
         <div class="modal-content">
             <span class="close-modal" onclick="closeModal('planModal')">×</span>
-            <h2 style="font-family:'Montserrat'; text-align:center;">Jornada de Aprendizado 2026</h2>
+            <h2 class="section-title-mod" style="text-align:center;">Jornada de Aprendizado 2026</h2>
             
             <div class="modal-tabs">
                 <button class="tab-btn active" onclick="openPlanTab('cronograma')">CRONOGRAMA</button>
@@ -1325,7 +893,7 @@
                     </details>
                 </div>
 
-                <div class="metodologia-box">
+                <div class="metodologia-box" style="margin-top:20px;">
                     <span class="met-title">PROCESSO DE EVOLUÇÃO</span>
                     <p class="met-text">Todas as turmas, do básico ao avançado, seguem a mesma técnica e modelo de ensino. <strong>Para iniciantes:</strong> Passam primeiro pelo aprendizado das técnicas fundamentais e, ao atingir o nível adequado, são integrados à metodologia principal.</p>
                 </div>
@@ -1342,254 +910,117 @@
         </div>
     </div>
 
+    <div id="competitionModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal('competitionModal')">×</span>
+            <h2 class="section-title-mod">Regras de Competição 2026</h2>
+            <p style="font-size:0.8rem; color:#666; margin-bottom:20px;">Diretrizes para atletas The Kings / Brazilian Roots</p>
+
+            <div class="rules-list-item">
+                <span class="rules-title"><i class="fas fa-ruler-combined"></i> PADRÃO DE COMPETIÇÃO (IBJJF/FPJJ)</span>
+                <ul class="rules-sub-list">
+                    <li><b>Cores Permitidas:</b> Apenas Kimonos Branco, Azul Real ou Preto (Cor única, sem misturas).</li>
+                    <li><b>Medidas:</b> O kimono não pode estar justo. Deve haver uma folga mínima de 7cm nas mangas e calças.</li>
+                    <li><b>Patches:</b> Proibidos em locais de pegada (gola, joelhos). Devem estar costurados firmemente.</li>
+                </ul>
+                <div style="display:flex; gap:10px; margin-top:15px; flex-wrap:wrap;">
+                    <a href="https://www.fpjjcompetidor.com.br/tabela-de-pesos/" target="_blank" class="btn btn-outline" style="flex:1; font-size:0.7rem;">TABELA DE PESO FPJJ</a>
+                    <a href="https://ibjjf.com/uniform" target="_blank" class="btn btn-outline" style="flex:1; font-size:0.7rem;">REGRAS UNIFORME IBJJF</a>
+                </div>
+            </div>
+
+            <div class="rules-list-item">
+                <span class="rules-title"><i class="fas fa-user-check"></i> LUTAR SEM COACH</span>
+                <ul class="rules-sub-list">
+                    <li><b>Autorização:</b> Permitido apenas com autorização prévia do professor representante.</li>
+                    <li><b>Representação:</b> O aluno deve estar federado e representar a equipe "Brazilian Roots / The King's".</li>
+                </ul>
+            </div>
+            
+            <button class="btn btn-primary" onclick="closeModal('competitionModal')" style="width:100%; margin-top:10px;">ENTENDI AS REGRAS</button>
+        </div>
+    </div>
+
+    <div id="termModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal('termModal')">×</span>
+            <h2 class="section-title-mod" style="margin-bottom:20px;">Termo de Responsabilidade</h2>
+            
+            <div class="rules-list-item" style="border:none; padding:0;">
+                <p style="font-size:0.9rem; color:#333; margin-bottom:20px;">
+                    Eu, na qualidade de aluno(a) ou responsável legal pelo(a) menor matriculado(a), declaro para os devidos fins de direito que tenho pleno conhecimento dos termos abaixo:
+                </p>
+
+                <span class="rules-title">1. DECLARAÇÃO DE SAÚDE</span>
+                <p style="font-size:0.9rem; color:#555; margin-bottom:15px;">
+                    Declaro estar em perfeitas condições de saúde física e mental para a prática de artes marciais. Atesto que fui submetido a avaliação médica (ou assumo a responsabilidade por não tê-la feito) e isento a <strong>The Kings Academy</strong> de responsabilidade sobre o agravamento de lesões ou condições preexistentes não informadas.
+                </p>
+
+                <span class="rules-title">2. CIÊNCIA DOS RISCOS (ALTO CONTATO)</span>
+                <p style="font-size:0.9rem; color:#555; margin-bottom:10px;">
+                    Estou ciente de que a prática de artes marciais (incluindo <strong>Jiu-Jitsu</strong>, <strong>Muay Thai</strong> e <strong>Boxe</strong>) é uma atividade física de contato que envolve riscos inerentes, tais como:
+                </p>
+                <ul class="rules-sub-list">
+                    <li>Lesões musculares e articulares.</li>
+                    <li>Contusões, hematomas e escoriações.</li>
+                    <li>Riscos de queda e impacto.</li>
+                </ul>
+                <p style="font-size:0.9rem; color:#555; margin-top:10px; margin-bottom:15px;">
+                    Entendo que, mesmo com o uso correto dos equipamentos e supervisão do <strong>Professor Jonathan Willy</strong>, o risco não pode ser totalmente anulado, e aceito participar voluntariamente.
+                </p>
+
+                <span class="rules-title">3. CONDUTA E SEGURANÇA</span>
+                <p style="font-size:0.9rem; color:#555;">
+                    Comprometo-me a seguir rigorosamente as orientações do professor, utilizar os equipamentos de proteção obrigatórios e manter uma conduta respeitosa, preservando a integridade física dos meus colegas de treino.
+                </p>
+                
+                <h4 style="margin-top:25px; border-bottom:2px solid #333;">POLÍTICA ANTI-BULLYING</h4>
+                <p style="font-size:0.9rem; color:#555; margin-top:10px;">
+                    Temos tolerância zero contra bullying. O ambiente deve ser seguro para todos. Ofensas, exclusão ou agressão fora do contexto de treino resultarão em medidas disciplinares imediatas.
+                </p>
+                <a href="https://drive.google.com/drive/folders/163w9vgQTpDoezlB69J9eIFki2b7RdlIM" target="_blank" class="btn btn-outline" style="width:100%; text-align:center; margin-top:10px; display:block;">VER MATERIAL COMPLETO</a>
+            </div>
+
+            <button class="btn btn-primary" onclick="closeModal('termModal')" style="width:100%; margin-top:10px;">LI E ESTOU CIENTE</button>
+        </div>
+    </div>
+
     <script>
-        // --- LÓGICA DE VALIDAÇÃO CPF ---
-        function maskCPF(input) {
-            // Removido para usar campo senha sem mascara visual
-        }
-
-        function isValidCPF(cpf) {
-            cpf = cpf.replace(/[^\d]+/g, '');
-            if (cpf.length !== 11 || /^(\d)\1+$/.test(cpf)) return false;
-            let sum = 0, remainder;
-            for (let i = 1; i <= 9; i++) sum += parseInt(cpf.substring(i - 1, i)) * (11 - i);
-            remainder = (sum * 10) % 11;
-            if ((remainder === 10) || (remainder === 11)) remainder = 0;
-            if (remainder !== parseInt(cpf.substring(9, 10))) return false;
-            sum = 0;
-            for (let i = 1; i <= 10; i++) sum += parseInt(cpf.substring(i - 1, i)) * (12 - i);
-            remainder = (sum * 10) % 11;
-            if ((remainder === 10) || (remainder === 11)) remainder = 0;
-            if (remainder !== parseInt(cpf.substring(10, 11))) return false;
-            return true;
-        }
-
-        function attemptLogin() {
-            const cpfInput = document.getElementById('cpfInput');
-            const errorDiv = document.getElementById('loginError');
+        // SENHA GERAL
+        function attemptLogin(event) {
+            if(event) event.preventDefault();
+            const input = document.getElementById('cpfInput').value.trim();
             const rememberMe = document.getElementById('rememberMe').checked;
-            const cpf = cpfInput.value;
-
-            errorDiv.innerText = "";
-
-            if (!isValidCPF(cpf)) {
-                errorDiv.innerText = "CPF Inválido. Verifique os números.";
-                return;
-            }
-
-            // Lógica de "Fake Error" na primeira tentativa válida
-            if (!sessionStorage.getItem('firstAttemptDone')) {
-                errorDiv.innerText = "Erro: CPF não localizado na base ativa.";
-                sessionStorage.setItem('firstAttemptDone', 'true');
-                
-                // FORÇAR LIMPEZA E FOCO COM PEQUENO ATRASO PARA GARANTIR
-                setTimeout(() => {
-                    cpfInput.value = ""; 
-                    cpfInput.focus();
-                }, 100);
-                
-                return;
-            }
-
-            // Sucesso na segunda tentativa
-            document.getElementById('lockScreen').classList.add('hidden');
-            if (rememberMe) {
-                localStorage.setItem('kingsAuthToken', 'valid');
-                const expiry = new Date();
-                expiry.setDate(expiry.getDate() + 30);
-                localStorage.setItem('kingsAuthExpiry', expiry.getTime());
+            
+            if (input === "#THEKINGS2026") {
+                document.getElementById('lockScreen').classList.add('hidden');
+                if (rememberMe) localStorage.setItem('kingsFilialToken', 'valid');
+            } else {
+                document.getElementById('loginError').innerText = "Senha incorreta.";
+                document.getElementById('cpfInput').style.borderColor = "#ff7675";
             }
         }
-
-        function checkSession() {
-            const token = localStorage.getItem('kingsAuthToken');
-            const expiry = localStorage.getItem('kingsAuthExpiry');
-            const now = new Date().getTime();
-
-            if (token === 'valid' && expiry && now < parseInt(expiry)) {
-                document.getElementById('lockScreen').style.display = 'none';
-            }
+        if (localStorage.getItem('kingsFilialToken') === 'valid') {
+            document.getElementById('lockScreen').style.display = 'none';
         }
 
-        // --- DADOS E LÓGICA DE GRADE ---
-        const scheduleData = {
-            "1,3": [{h: 8, name: "JJ Kids"}, {h: 9, name: "JJ Adulto"}, {h: 18, name: "Muay Thai"}, {h: 19, name: "JJ Kids"}, {h: 20, name: "JJ Adulto"}, {h: 21, name: "Boxe"}],
-            "2,4": [{h: 19, name: "JJ Baby"}, {h: 20, name: "Muay Thai Kids"}, {h: 21, name: "Muay Thai Adulto"}],
-            "5": [{h: 8, name: "NoGi Kids"}, {h: 9, name: "NoGi Adulto"}, {h: 18, name: "Muay Thai"}, {h: 19, name: "NoGi Kids"}, {h: 20, name: "NoGi Adulto"}, {h: 21, name: "Boxe"}]
-        };
-        const fullScheduleText = {
-            jiujitsu: [
-                { title: "Segunda / Quarta", times: ["08:00 - Kids", "09:00 - Adulto", "19:00 - Kids", "20:00 - Adulto"] },
-                { title: "Terça / Quinta", times: ["19:00 - Baby (04 a 07 anos)"] },
-                { title: "Sexta (NoGi)", times: ["08:00 - Kids", "09:00 - Adulto", "19:00 - Kids", "20:00 - Adulto"] }
-            ],
-            muaythai: [{ title: "Seg/Qua/Sex", times: ["18:00 - Misto"] }, { title: "Ter/Qui", times: ["20:00 - Kids", "21:00 - Adulto"] }],
-            boxe: [{ title: "Segunda / Quarta / Sexta", times: ["21:00 - Adulto"] }]
-        };
-        const daysMap = ["DOMINGO", "SEGUNDA", "TERÇA", "QUARTA", "QUINTA", "SEXTA", "SÁBADO"];
-
-        // --- CALENDÁRIO INTELIGENTE ---
-        const championships = [
-            { d: new Date("2026-01-31"), t: "Sul Brasileiro (Floripa)", f: "cbjj", url: "https://cbjj.com.br" },
-            { d: new Date("2026-02-01"), t: "Kids International (Floripa)", f: "cbjj", url: "https://cbjj.com.br" },
-            { d: new Date("2026-02-07"), t: "South American Kids (Rio)", f: "cbjj", url: "https://cbjj.com.br" },
-            { d: new Date("2026-02-28"), t: "I Copa Grandes Mestres (SP)", f: "fpjj", url: "https://fpjj.com.br" },
-            { d: new Date("2026-02-28"), t: "Curitiba Summer Open", f: "cbjj", url: "https://cbjj.com.br" },
-            { d: new Date("2026-03-01"), t: "I Etapa Paulista No-Gi (SP)", f: "fpjj", url: "https://fpjj.com.br" },
-            { d: new Date("2026-03-14"), t: "I Etapa Circuito Paulista (Barueri)", f: "fpjj", url: "https://fpjj.com.br" },
-            { d: new Date("2026-04-24"), t: "CAMPEONATO BRASILEIRO (Barueri)", f: "cbjj", url: "https://cbjj.com.br" },
-            { d: new Date("2026-05-23"), t: "II Etapa Circuito Paulista (Barueri)", f: "fpjj", url: "https://fpjj.com.br" },
-            { d: new Date("2026-06-13"), t: "Brasileiro Infantil (Barueri)", f: "cbjj", url: "https://cbjj.com.br" },
-            { d: new Date("2026-06-27"), t: "II Copa Grandes Mestres (Guarujá)", f: "fpjj", url: "https://fpjj.com.br" },
-            { d: new Date("2026-07-18"), t: "São Paulo Open (Barueri)", f: "cbjj", url: "https://cbjj.com.br" },
-            { d: new Date("2026-08-15"), t: "III Etapa Circuito Paulista (Barueri)", f: "fpjj", url: "https://fpjj.com.br" },
-            { d: new Date("2026-09-26"), t: "São Paulo BJJ Pro (Barueri)", f: "cbjj", url: "https://cbjj.com.br" },
-            { d: new Date("2026-11-20"), t: "Sul Americano (Barueri)", f: "cbjj", url: "https://cbjj.com.br" }
-        ];
-
-        function renderCalendar() {
-            const list = document.getElementById('championshipsList');
-            const today = new Date(); 
-            let html = "";
-            let count = 0;
-
-            championships.forEach(ev => {
-                const evEnd = new Date(ev.d); 
-                evEnd.setDate(evEnd.getDate() + 1);
-
-                if (evEnd >= today) {
-                    const month = ev.d.toLocaleString('pt-BR', { month: 'short' }).toUpperCase().replace('.', '');
-                    const day = ev.d.getDate();
-                    const isSoon = (ev.d - today) < (30 * 24 * 60 * 60 * 1000); 
-                    const badgeClass = ev.f === 'cbjj' ? 'cbjj' : 'fpjj';
-                    const tagSoon = isSoon ? '<span class="comp-tag soon">EM BREVE</span>' : '';
-
-                    html += `
-                    <div class="comp-card">
-                        <div class="comp-date-badge">${day}<span>${month}</span></div>
-                        <div class="comp-info">
-                            <span class="comp-title">${ev.t} ${tagSoon}</span>
-                            <span class="comp-tag ${badgeClass}">${ev.f.toUpperCase()}</span>
-                        </div>
-                        <a href="${ev.url}" target="_blank" rel="noopener noreferrer" class="btn btn-outline" style="padding: 8px 12px; font-size: 0.7rem;">EDITAL</a>
-                    </div>`;
-                    count++;
-                }
-            });
-
-            if(count === 0) html = "<p style='text-align:center;'>Nenhum campeonato próximo encontrado.</p>";
-            list.innerHTML = html;
-        }
-
-        function updateSchedule() {
-            const now = new Date();
-            const d = now.getDay();
-            const h = now.getHours();
-            const m = now.getMinutes();
-            const currentTotal = (h * 60) + m;
-            const topText = document.getElementById('top-status-text');
-            const topDot = document.getElementById('top-dot');
-            const modalText = document.getElementById('modal-status-text');
-            const modalDot = document.getElementById('modal-dot');
-            const todayList = document.getElementById('today-list');
-            const dayDisp = document.getElementById('day-display');
-
-            if(dayDisp) dayDisp.innerText = daysMap[d];
-            if(todayList) todayList.innerHTML = "";
-
-            let status = "closed";
-            let activeName = "";
-            let statusMessage = "Academia Fechada Agora";
-            let classesToday = [];
-
-            for (const [key, value] of Object.entries(scheduleData)) {
-                if (key.split(',').map(Number).includes(d)) classesToday = value;
-            }
-
-            if (classesToday.length > 0) {
-                classesToday.forEach(cls => {
-                    const start = cls.h * 60;
-                    const end = start + 60;
-                    const openMinutes = start - 10;
-                    const li = document.createElement('li');
-                    li.className = 'class-item';
-                    if(currentTotal >= start && currentTotal < end) {
-                        li.classList.add('active');
-                        li.innerHTML = `<span>${cls.h}:00 - ${cls.name}</span> <span class="live-tag">ROLANDO</span>`;
-                        status = "active";
-                        activeName = cls.name;
-                    } else { li.innerHTML = `<span>${cls.h}:00 - ${cls.name}</span>`; }
-                    todayList.appendChild(li);
-                    if (status !== "active" && currentTotal >= openMinutes && currentTotal < start) { status = "opening"; activeName = cls.name; }
-                });
-            } else { todayList.innerHTML = "<li style='text-align:center; color:#999; padding:10px;'>Sem aulas hoje.</li>"; }
-
-            topDot.className = "live-dot";
-            if(modalDot) modalDot.className = "live-dot";
-
-            if (d === 0 || d === 6) { 
-                statusMessage = "Academia Fechada";
-                topDot.className = "live-dot closed";
-            } 
-            else if (status === "active") {
-                statusMessage = "Rolando Agora: " + activeName;
-                topDot.className = "live-dot active";
-            }
-            else if (status === "opening") {
-                statusMessage = "Abrindo para: " + activeName;
-                topDot.className = "live-dot opening";
-            }
-            else { 
-                statusMessage = "Academia Fechada";
-                topDot.className = "live-dot closed";
-            }
-
-            if(topText) topText.innerText = statusMessage;
-            if(modalText) modalText.innerText = statusMessage;
-        }
-
-        function updateModalView() {
-            const val = document.getElementById('modalScheduleSelect').value;
-            const fullContainer = document.getElementById('modalFullScheduleContainer');
-            const todayContainer = document.getElementById('today-list');
-
-            if(val === 'today') { fullContainer.style.display = 'none'; todayContainer.style.display = 'block'; }
-            else {
-                todayContainer.style.display = 'none'; fullContainer.style.display = 'block';
-                const data = fullScheduleText[val];
-                let html = "";
-                if(data) {
-                    data.forEach(group => {
-                        html += `<div class="full-grade-group"><span class="full-grade-title">${group.title}</span><div class="full-grade-times">`;
-                        group.times.forEach(time => { html += `<div class="time-badge">${time}</div>`; });
-                        html += `</div></div>`;
-                    });
-                } else { html = "<p style='text-align:center; color:#999;'>Horários não disponíveis.</p>"; }
-                fullContainer.innerHTML = html;
-            }
-        }
-
+        // TABS LÓGICA
         function openPlanTab(tabName) {
             const contents = document.getElementsByClassName('tab-content');
             const buttons = document.getElementsByClassName('tab-btn');
             
-            // Lógica específica para o modal Investimentos que tem IDs diferentes
-            if(tabName === 'uniforme' || tabName === 'graduacao' || tabName === 'boxe' || tabName === 'custos') {
-                document.getElementById('tab-uniforme').classList.remove('active');
-                document.getElementById('tab-graduacao').classList.remove('active');
-                document.getElementById('tab-boxe').classList.remove('active');
-                document.getElementById('tab-custos').classList.remove('active');
-                
-                document.getElementById('tab-' + tabName).classList.add('active');
-            } else {
-                // Lógica para o modal Plano de Aula
-                for(let content of contents) content.classList.remove('active');
-                document.getElementById('tab-' + tabName).classList.add('active');
+            Array.from(contents).forEach(c => c.classList.remove('active'));
+            if(event && event.currentTarget) {
+                 let siblings = event.currentTarget.parentNode.children;
+                 for(let btn of siblings) btn.classList.remove('active');
+                 event.currentTarget.classList.add('active');
             }
-            
-            let siblings = event.currentTarget.parentNode.children;
-            for(let btn of siblings) btn.classList.remove('active');
-            event.currentTarget.classList.add('active');
+
+            if(['uniforme','graduacao','custos'].includes(tabName)) {
+               document.getElementById('tab-' + tabName).classList.add('active');
+            } else if (['cronograma','metodologia'].includes(tabName)) {
+               document.getElementById('tab-' + tabName).classList.add('active');
+            }
         }
 
         function switchPrice(btn, type) {
@@ -1621,27 +1052,180 @@
             }
         }
 
+        // --- SISTEMA DE FAIXAS (Card Toggle) ---
+        function toggleBelt(card) {
+            card.classList.toggle('active');
+        }
+
+        // CALENDÁRIO & MODAIS
+        const championships = [
+            { d: "31/01", t: "Sul Brasileiro (Floripa)", f: "cbjj" },
+            { d: "01/02", t: "Kids International (Floripa)", f: "cbjj" },
+            { d: "07/02", t: "South American Kids (Rio)", f: "cbjj" },
+            { d: "28/02", t: "I Copa Grandes Mestres (SP)", f: "fpjj" },
+            { d: "28/02", t: "Curitiba Summer Open", f: "cbjj" },
+            { d: "01/03", t: "I Etapa Paulista No-Gi (SP)", f: "fpjj" },
+            { d: "14/03", t: "I Etapa Circuito Paulista (Barueri)", f: "fpjj" },
+            { d: "24/04", t: "CAMPEONATO BRASILEIRO (Barueri)", f: "cbjj" },
+            { d: "23/05", t: "II Etapa Circuito Paulista (Barueri)", f: "fpjj" },
+            { d: "13/06", t: "Brasileiro Infantil (Barueri)", f: "cbjj" },
+            { d: "27/06", t: "II Copa Grandes Mestres (Guarujá)", f: "fpjj" },
+            { d: "18/07", t: "São Paulo Open (Barueri)", f: "cbjj" },
+            { d: "15/08", t: "III Etapa Circuito Paulista (Barueri)", f: "fpjj" },
+            { d: "26/09", t: "São Paulo BJJ Pro (Barueri)", f: "cbjj" },
+            { d: "20/11", t: "Sul Americano (Barueri)", f: "cbjj" }
+        ];
+
+        function renderCalendar() {
+            const list = document.getElementById('championshipsList');
+            if(!list) return;
+            
+            let html = "";
+            let nextEventFound = false;
+            
+            // Data atual com hora zerada para comparação justa
+            const today = new Date();
+            today.setHours(0,0,0,0);
+            const currentYear = today.getFullYear(); // Assumindo 2026 conforme contexto
+
+            championships.forEach(ev => {
+                const badgeClass = ev.f === 'cbjj' ? 'tag-cbjj' : 'tag-fpjj';
+                
+                // Converte "31/01" para Date object
+                const [day, month] = ev.d.split('/');
+                const eventDate = new Date(currentYear, month - 1, day); // Mês começa em 0 no JS
+                
+                // Só mostra eventos futuros ou de hoje
+                if (eventDate >= today) {
+                    let tagHtml = "";
+                    // Se for o primeiro encontrado (o mais próximo), ganha a tag
+                    if (!nextEventFound) {
+                        tagHtml = '<span class="blink-tag">EM BREVE...</span>';
+                        nextEventFound = true;
+                    }
+
+                    html += `
+                    <div class="comp-list-item">
+                        <div class="comp-left">
+                            <span class="comp-date">[${day}/${month}]</span>
+                            ${tagHtml}
+                            <span class="comp-name">${ev.t}</span>
+                        </div>
+                        <span class="comp-tag-badge ${badgeClass}">${ev.f.toUpperCase()}</span>
+                    </div>`;
+                }
+            });
+            
+            if(html === "") html = "<p style='text-align:center; padding:20px; color:#999;'>Sem eventos futuros cadastrados.</p>";
+            list.innerHTML = html;
+        }
+
         function openModal(id) { 
             document.getElementById(id).style.display = 'block'; 
-            document.body.style.overflow = 'hidden';
+            if(id === 'scheduleModal') updateSchedule();
             if(id === 'calendarModal') renderCalendar();
         }
-        function closeModal(id) { document.getElementById(id).style.display = 'none'; document.body.style.overflow = 'auto'; }
+        function closeModal(id) { document.getElementById(id).style.display = 'none'; }
         window.onclick = function(e) { if(e.target.className === 'modal') closeModal(e.target.id); }
 
-        let exitEventAdded = false;
-        
-        document.addEventListener('mouseleave', (e) => {
-            if (e.clientY < 0 && !exitEventAdded && !sessionStorage.getItem('clubeExitShown')) {
-                openModal('clubeModal');
-                exitEventAdded = true;
-                sessionStorage.setItem('clubeExitShown', 'true');
-            }
-        });
+        // --- LÓGICA DE GRADE (THE KINGS) ---
+        const scheduleData = {
+            "1,3": [{h: 8, name: "JJ Kids"}, {h: 9, name: "JJ Adulto"}, {h: 18, name: "Muay Thai"}, {h: 19, name: "JJ Kids"}, {h: 20, name: "JJ Adulto"}, {h: 21, name: "Boxe"}],
+            "2,4": [{h: 19, name: "JJ Baby"}, {h: 20, name: "Muay Thai Kids"}, {h: 21, name: "Muay Thai Adulto"}],
+            "5": [{h: 8, name: "NoGi Kids"}, {h: 9, name: "NoGi Adulto"}, {h: 18, name: "Muay Thai"}, {h: 19, name: "NoGi Kids"}, {h: 20, name: "NoGi Adulto"}, {h: 21, name: "Boxe"}]
+        };
+        const fullScheduleText = {
+            jiujitsu: [
+                { title: "Segunda / Quarta", times: ["08:00 - Kids", "09:00 - Adulto", "19:00 - Kids", "20:00 - Adulto"] },
+                { title: "Terça / Quinta", times: ["19:00 - Baby (04 a 07 anos)"] },
+                { title: "Sexta (NoGi)", times: ["08:00 - Kids", "09:00 - Adulto", "19:00 - Kids", "20:00 - Adulto"] }
+            ],
+            muaythai: [{ title: "Seg/Qua/Sex", times: ["18:00 - Misto"] }, { title: "Ter/Qui", times: ["20:00 - Kids", "21:00 - Adulto"] }],
+            boxe: [{ title: "Segunda / Quarta / Sexta", times: ["21:00 - Adulto"] }]
+        };
+        const daysMap = ["DOMINGO", "SEGUNDA", "TERÇA", "QUARTA", "QUINTA", "SEXTA", "SÁBADO"];
 
-        checkSession();
-        updateSchedule();
+        function updateSchedule() {
+            const now = new Date();
+            const d = now.getDay();
+            const h = now.getHours();
+            const m = now.getMinutes();
+            const currentTotal = (h * 60) + m;
+            
+            const topText = document.getElementById('top-status-text');
+            const topDot = document.getElementById('top-dot');
+            const modalText = document.getElementById('modal-status-text');
+            const modalDot = document.getElementById('modal-dot');
+            const dayDisp = document.getElementById('day-display');
+            const todayList = document.getElementById('today-list');
+
+            if(dayDisp) dayDisp.innerText = daysMap[d];
+            if(todayList) todayList.innerHTML = "";
+
+            let status = "closed";
+            let activeName = "";
+            let statusMessage = "Academia Fechada Agora";
+            let classesToday = [];
+
+            for (const [key, value] of Object.entries(scheduleData)) {
+                if (key.split(',').map(Number).includes(d)) classesToday = value;
+            }
+
+            if (classesToday.length > 0) {
+                classesToday.forEach(cls => {
+                    const start = cls.h * 60;
+                    const end = start + 60;
+                    const openMinutes = start - 10;
+                    const li = document.createElement('li');
+                    li.className = 'class-item';
+                    if(currentTotal >= start && currentTotal < end) {
+                        li.classList.add('active');
+                        li.innerHTML = `<span>${cls.h}:00 - ${cls.name}</span> <span class="live-tag">ROLANDO</span>`;
+                        status = "active";
+                        activeName = cls.name;
+                    } else { li.innerHTML = `<span>${cls.h}:00 - ${cls.name}</span>`; }
+                    todayList.appendChild(li);
+                    if (status !== "active" && currentTotal >= openMinutes && currentTotal < start) { status = "opening"; activeName = cls.name; }
+                });
+            } else { todayList.innerHTML = "<li style='text-align:center; color:#999; padding:10px;'>Sem aulas hoje.</li>"; }
+
+            // Atualiza status visual
+            const updateVisuals = (dot, text) => {
+                if(dot && text) {
+                    dot.className = "live-dot";
+                    if (d === 0 || d === 6) { text.innerText = "Academia Fechada"; dot.className += " closed"; } 
+                    else if (status === "active") { text.innerText = "Rolando: " + activeName; dot.className += " active"; }
+                    else if (status === "opening") { text.innerText = "Abrindo: " + activeName; dot.className += " opening"; }
+                    else { text.innerText = "Academia Fechada"; dot.className += " closed"; }
+                }
+            };
+            updateVisuals(topDot, topText);
+            updateVisuals(modalDot, modalText);
+        }
+
+        function updateModalView() {
+            const val = document.getElementById('modalScheduleSelect').value;
+            const fullContainer = document.getElementById('modalFullScheduleContainer');
+            const todayContainer = document.getElementById('today-list');
+
+            if(val === 'today') { fullContainer.style.display = 'none'; todayContainer.style.display = 'block'; }
+            else {
+                todayContainer.style.display = 'none'; fullContainer.style.display = 'block';
+                const data = fullScheduleText[val];
+                let html = "";
+                if(data) {
+                    data.forEach(group => {
+                        html += `<div class="full-grade-group"><span class="full-grade-title">${group.title}</span><div class="full-grade-times">`;
+                        group.times.forEach(time => { html += `<div class="time-badge">${time}</div>`; });
+                        html += `</div></div>`;
+                    });
+                }
+                fullContainer.innerHTML = html;
+            }
+        }
+
         setInterval(updateSchedule, 30000);
+        updateSchedule(); // Init
     </script>
 </body>
 </html>
